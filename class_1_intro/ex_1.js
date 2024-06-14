@@ -6,7 +6,7 @@ personalizada com template string na tela usando o console.
 */
 var nameUser
 
-nameUser = prompt("Digite seu nome:")
+nameUser = prompt("What's your name?")
 
 console.log(` Hello ${nameUser} how are you today? `)
 
