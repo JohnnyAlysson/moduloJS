@@ -1,2 +1,2 @@
 # moduloJS
-Repositorio criado para salvas arquivos das aulas de Javascript pela Infinity school.
+Repositorio criado para salvar arquivos das aulas de Javascript pela Infinity school.
