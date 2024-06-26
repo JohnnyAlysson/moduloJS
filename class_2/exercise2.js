@@ -12,12 +12,13 @@
 // resultados entre 30 e 34,9 — obesidade grau I;
 // MAIOR QUE 40,0	OBESIDADE GRAVE	
 
+var nome = prompt("Digite seu nome");
 var peso = prompt("Digite seu peso");
 var altura = prompt("Digite seu altura");
 
 var calculoIMC = peso/ (altura**2);
 
-console.log(` seu IMC e ${calculoIMC}`)
+console.log(`${nome} seu IMC e ${calculoIMC}`)
 
 if (calculoIMC < 16){
   console.log("Voce esta na magreza grave")
