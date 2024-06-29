@@ -35,7 +35,7 @@ function showForm(formType) {
         formHtml = `
               <h2>Área do cubo</h2>
               <label for="lado">Lado:</label>
-              <input type="number" id="lado placeholder="Digite o lado>
+              <input type="number" id="lado" placeholder="Digite o lado">
               <button onclick="calcularCubo()">Calcular</button>
               <div id="resultado"></div>
           `;
@@ -43,12 +43,10 @@ function showForm(formType) {
             
       case 'circulo':
         formHtml = `
-              <h2>Área do retângulo</h2>
-              <label for="base">Base:</label>
-              <input type="number" id="base" placeholder="Digite a base">
-              <label for="altura">Altura:</label>
-              <input type="number" id="altura" placeholder="Digite a altura">
-              <button onclick="calcularRetangulo()">Calcular</button>
+              <h2>Área do Circulo</h2>
+              <label for="raio">Raio:</label>
+              <input type="number" id="raio" placeholder="Digite o Raio">
+              <button onclick="calcularCirculo()">Calcular</button>
               <div id="resultado"></div>
           `;
           break;
@@ -56,17 +54,32 @@ function showForm(formType) {
     document.getElementById('form-placement').innerHTML = formHtml;
   }
 
+// 1. Calcular Área do Triângulo
+function calcularTriangulo(){
+    const base = document.getElementById('base').value;
+    const altura = document.getElementById('altura').value;
+    const area = (base * altura) / 2;
+    document.getElementById('resultado').innerHTML = `Área do Triângulo: ${area}`;
+}
+function calcularRetangulo(){
+    const base = document.getElementById('base').value;
+    const altura = document.getElementById('altura').value;
+    const area = (base * altura);
+    document.getElementById('resultado').innerHTML = `Área do Retângulo: ${area}`;
+}
+function calcularCubo(){
+    const lado = document.getElementById('lado').value;
+    const area = (lado ** 3);
+    document.getElementById('resultado').innerHTML = `Área do Cubo: ${area}`;
+}
+function calcularCirculo(){
+    const raio = document.getElementById('raio').value;
+    const area = 3.14 * (raio **2);
+    document.getElementById('resultado').innerHTML = `Área do Circulo: ${area}`;
+}
 
 
-
-// // 1. Calcular Área do Triângulo
-//     console.log("Calculo da area do triangulo:")
-//     var base = prompt("Digite a base")
-//     var altura = prompt("Digite a altura")
-//     var calculo = (base*altura)/2
-//     console.log(`area do triangulo e ${calculo}`)
-//     break
-// // 2. Calcular Área do Retângulo
+// 2. Calcular Área do Retângulo
 //     console.log("Calculo da area do retangulo:")
 //     var base = prompt("Digite a base")
 //     var altura = prompt("Digite a altura")
