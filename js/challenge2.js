@@ -6,7 +6,7 @@
 // // Utilize condicionais para direcionar o programa com
 // // base na escolha do usuário.
 function showForm(formType) {
-  let formHtml = '';
+  var formHtml = '';
   switch (formType) {
       case 'triangulo':
           formHtml = `
