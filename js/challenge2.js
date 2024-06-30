@@ -77,6 +77,9 @@ function calcularCirculo(){
     const area = 3.14 * (raio **2);
     document.getElementById('resultado').innerHTML = `Área do Circulo: ${area}`;
 }
+function sair(){
+    document.getElementById('form-placement').innerHTML = ``;
+}
 
 
 // 2. Calcular Área do Retângulo
