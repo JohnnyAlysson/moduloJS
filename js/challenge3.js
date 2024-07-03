@@ -20,78 +20,173 @@
 // Se o usuário escolher  "Sair " , encerre o programa  exibindo uma mensagem de despedida. 
 // Se o usuário escolher uma opção inválida, exiba uma mensagem indicando isso e permita que o  usuário faça uma nova escolha.
 
+
+// // Codigo original:
+// var saldo = 1000;
+// var extrato = '' ;
+// var now ;
+
+// alert("Simulador de caixa eletrônico")
+// while(true){
+//   var user = prompt(`
+//     Escolha uma opção:
+//     1 - Ver saldo;
+//     2 - Fazer saque;
+//     3 - Fazer depósito;
+//     4 - Extrato
+//     0 - Sair;
+//     `)
+//   if (user == "0"){
+//     break
+//   }
+//   switch(user){
+//     case "1":
+//       alert(`Seu saldo é atual é : ${saldo}`)
+//       console.log(`Seu saldo é atual é : ${saldo}`)
+//       continue
+
+//     case "2":
+//       var saque = Number(prompt(" 2-Quanto você gostaria de sacar?"))
+//       if(saque > 0 && saque < saldo){
+//         saldo = saldo - saque
+//         alert("Saque realizado com sucesso")
+//         now = new Date()
+//         extrato = extrato + `\n${now} = - ${saque} `
+//       }
+//       else if(saque > saldo){
+//         alert("Saldo insuficiente")
+//       }
+//       else{
+//         alert("Input Inválido, tente novamente")
+//       }
+//       continue
+
+//       case "3":
+
+//       var deposito = Number(prompt(" 3-Quanto você gostaria de depositar?"))
+//       if(deposito > 0){
+//         saldo = saldo + deposito
+//         alert("Deposito realizado com sucesso")
+//         now = new Date()
+//         extrato = extrato + `\n${now} = - ${deposito} `
+//       }
+//       else{
+//         alert("Input Inválido, tente novamente")
+//       }
+//       continue
+
+//     case "4":
+
+//       alert(`Extrato completo:
+//         ${extrato}
+//         Saldo atual :${saldo}
+//         `)
+//       console.log(`Extrato completo:
+//         ${extrato}
+//         Saldo atual :${saldo}
+//         `)
+//       continue
+
+//     default:
+//       alert("Opção inválida tente novamente")
+//       console.log("Opção inválida tente novamente")
+//       continue
+
+//   }
+// }
+
+// alert("Fim do programa")
+// console.log("Fim do programa")
+
+//Codigo 2.0:
 var saldo = 1000;
 var extrato = '' ;
 var now ;
 
-alert("Simulador de caixa eletrônico")
-while(true){
-  var user = prompt(`
-    Escolha uma opção:
-    1 - Ver saldo;
-    2 - Fazer saque;
-    3 - Fazer depósito;
-    4 - Extrato
-    0 - Sair;
-    `)
-  if (user == "0"){
-    break
+
+function showForm(formType) {
+  var formHtml = '';
+  switch (formType) {
+      case 'saldo':
+          formHtml = `
+              <h2>Saldo disponível:</h2>
+              <div class = "saldo"><div id="resultado">R$ </div></div>
+              <button onclick="mostrarSaldo()">Clique para ver seu saldo</button>
+          `;
+          break;
+      case 'deposito':
+        formHtml = `
+              <h2>Fazer depósito:</h2>
+              <label for="deposito">Quanto gostaria de depositar?</label>
+              <input type="number" id="deposito" placeholder="Digite o valor">
+              <button onclick="depositar()">Depositar</button>
+              <div id="resultado"></div>
+          `;
+          break;
+
+      case 'saque':
+        formHtml = `
+              <h2>Realizar Saque:</h2>
+              <label for="saque">Quanto gostaria de sacar?</label>
+              <input type="number" id="saque" placeholder="Digite o valor">
+              <button onclick="sacar()">Sacar</button>
+              <div id="resultado"></div>
+          `;
+          break;
+
+      case 'extrato':
+        formHtml = `
+              <h2>Extrato completo:</h2>
+              <button onclick="mostrarExtrato()">Mostrar Extrato</button>
+              <div id="resultado"></div>
+          `;
+          break;
+    }
+    document.getElementById('form-placement').innerHTML = formHtml;
   }
-  switch(user){
-    case "1":
-      alert(`Seu saldo é atual é : ${saldo}`)
-      console.log(`Seu saldo é atual é : ${saldo}`)
-      continue
 
-    case "2":
-      var saque = Number(prompt(" 2-Quanto você gostaria de sacar?"))
-      if(saque > 0 && saque < saldo){
-        saldo = saldo - saque
-        alert("Saque realizado com sucesso")
-        now = new Date()
-        extrato = extrato + `\n${now} = - ${saque} `
-      }
-      else if(saque > saldo){
-        alert("Saldo insuficiente")
-      }
-      else{
-        alert("Input Inválido, tente novamente")
-      }
-      continue
 
-      case "3":
+function mostrarSaldo(){
+  document.getElementById('resultado').innerHTML = `R$ ${saldo}`;
+}
 
-      var deposito = Number(prompt(" 3-Quanto você gostaria de depositar?"))
-      if(deposito > 0){
-        saldo = saldo + deposito
-        alert("Deposito realizado com sucesso")
-        now = new Date()
-        extrato = extrato + `\n${now} = - ${deposito} `
-      }
-      else{
-        alert("Input Inválido, tente novamente")
-      }
-      continue
-
-    case "4":
-
-      alert(`Extrato completo:
-        ${extrato}
-        Saldo atual :${saldo}
-        `)
-      console.log(`Extrato completo:
-        ${extrato}
-        Saldo atual :${saldo}
-        `)
-      continue
-
-    default:
-      alert("Opção inválida tente novamente")
-      console.log("Opção inválida tente novamente")
-      continue
-
+function depositar(){
+  const deposito = Number(document.getElementById('deposito').value);
+  if(deposito > 0){
+    saldo = saldo + deposito
+    alert("Deposito realizado com sucesso")
+    document.getElementById('resultado').innerHTML = `Deposito realizado com sucesso`;
+    now = new Date()
+    extrato = extrato + `\n${now} = + ${deposito}\n `
+  }
+  else{
+    alert("Input Inválido, tente novamente")
+    document.getElementById('resultado').innerHTML = `Input Inválido, tente novamente`;
   }
 }
 
-alert("Fim do programa")
-console.log("Fim do programa")
+function sacar(){
+  const saque = Number(document.getElementById('saque').value);
+  if(saque > 0 && saque < saldo){
+    saldo = saldo - saque
+    alert("Saque realizado com sucesso")
+    document.getElementById('resultado').innerHTML = `Saque realizado com sucesso`;
+    now = new Date()
+    extrato = extrato + `\n${now} = - ${saque}\n `
+  }
+  else if(saque > saldo){
+    alert("Saldo insuficiente")
+  }
+  else{
+    alert("Input Inválido, tente novamente")
+    document.getElementById('resultado').innerHTML = `Input Inválido, tente novamente`;
+  }
+}
+function mostrarExtrato(){
+  document.getElementById('resultado').innerHTML = `Extrato completo:\n ${extrato}\n Saldo atual :${saldo}`;
+}
+
+
+function sair(){
+  document.getElementById('form-placement').innerHTML = ``;
+}
