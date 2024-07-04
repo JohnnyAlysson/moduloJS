@@ -6,7 +6,7 @@
 //   variavel_1 -- //contador = contador - 1
 // }
 
-// // exercise 2 
+// exercise 2 
 // var contador = 0
 // while( contador < 10 ){
 //   console.log(contador)
@@ -18,13 +18,13 @@
 // console.log(`o laco parou no ${contador}`)
 
 
-// exercise extra
-var exponencial = prompt("Digite um numero que deseja")
-var contador = 0
+// // exercise extra
+// var exponencial = prompt("Digite um numero que deseja")
+// var contador = 0
 
-do {
-  contador = contador + exponencial
-  exponencial --
-} while(exponencial <= 0)
+// do {
+//   contador = contador + exponencial
+//   exponencial --
+// } while(exponencial <= 0)
 
-console.log(`A exponencial do numero ${exponencial} e ${contador}`)
+// console.log(`A exponencial do numero ${exponencial} e ${contador}`)

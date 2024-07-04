@@ -99,9 +99,9 @@
 // console.log("Fim do programa")
 
 //Codigo 2.0:
+var now ;
 var saldo = 1000;
 var extrato = '' ;
-var now ;
 
 
 function showForm(formType) {

@@ -73,6 +73,43 @@
 // console.log(`O somatorio dos numeros e ${somatorio}`)
 // alert(`O somatorio dos numeros e ${somatorio}`)
 
+// Atividade 03 SLIDE NOVO
+// Crie um código que gera um número aleatório entre 1 e 10. O
+// código deve pedir ao usuário para adivinhar o número, repetindo
+// o pedido até que o usuário acerte.
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+
+alert(" Adivinhe o numero:")
+var computer = Number(getRandomInt(10))
+console.log(computer)
+
+while(true){
+  var user = Number(prompt(("Digite um numero entre 1 e 10")))
+  if (!isNaN(user == true)){
+    alert("Input invalido, digite um numero, e nao um texto")
+  }
+  else if( user < 0 || user >10){
+    alert("Numero deve ser entre 1 e 10, tenta novamente!")
+  }
+  else if (user != computer){
+    alert("Errou, tente novamente")
+  }
+  else if (user == computer){
+    alert("PARABENS VOCE ADIVINHOU")
+    break
+  }
+  else{
+    alert("WHAT? input invalido,o que diaxo voce digitou?")
+  }
+}
+
+
+
+
+
 // // Atividade 04
 // // Faça um programa que leia um nome de usuário e a sua senha e não
 // // aceite a senha igual ao nome do usuário, mostrando uma mensagem de
