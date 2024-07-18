@@ -67,6 +67,8 @@ p{
   background-color: #3a7bc8;
 }
 
+
+
 /* Dark mode styles */
 body.dark-mode {
   --bg-color: #333;

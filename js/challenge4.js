@@ -62,3 +62,37 @@
 
 // REAL CHALLENGE:
 // Criar programa para manipular arrays com interaface grafica
+
+var array = []
+
+function showAdd(){
+  var formHtml = `
+              <div class = "space">
+              <h2>Qual palavra gostaria de adicionar?</h2>
+              <label for="word">Palavra:</label>
+              <input type="text" id="word" placeholder="Digite a palavra">
+              <button onclick="addWord()"><i class="fa fa-plus" aria-hidden="true"></i> Adicionar</button>
+              </div>
+          `
+  document.getElementById('form-placement').innerHTML = formHtml;
+}
+
+function showRemove(){
+  var formHtml = `
+              <div class = "space">
+              <h2>Qual palavra gostaria de remover?</h2>
+              <label for="word">Palavra:</label>
+              <input type="text" id="word" placeholder="Digite a palavra">
+              <button onclick="addWord()"><i class="fa fa-plus" aria-hidden="true"></i> Adicionar</button>
+              </div>
+          `
+  document.getElementById('form-placement').innerHTML = formHtml;
+}
+
+
+function addWord(){
+  const new_word= document.getElementById('word').value
+  alert(new_word)
+  array.push(` ${new_word}`)
+  document.getElementById('array').innerHTML = array
+}

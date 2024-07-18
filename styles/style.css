@@ -25,6 +25,7 @@ h2{
   font-size: 30px;
   margin-bottom: 5px;
   color: white;
+  text-align: center;
 }
 #form-container {
   margin-top: var(--padding);
@@ -53,6 +54,7 @@ button{
   background-color: #9859e4;
   border-radius: 10px;
   border-style: none;
+  cursor: pointer;
 
 }
 button:hover{
@@ -64,6 +66,14 @@ button:hover{
   justify-content: center;
   width: 3rem;
 }
+
+.space{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding:1rem
+}
+
 label, input {
   color: white;
   display: block;
