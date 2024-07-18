@@ -77,17 +77,31 @@ function showAdd(){
   document.getElementById('form-placement').innerHTML = formHtml;
 }
 
-function showRemove(){
-  var formHtml = `
-              <div class = "space">
-              <h2>Qual palavra gostaria de remover?</h2>
-              <label for="word">Palavra:</label>
-              <input type="text" id="word" placeholder="Digite a palavra">
-              <button onclick="addWord()"><i class="fa fa-plus" aria-hidden="true"></i> Adicionar</button>
-              </div>
-          `
+function showRemove() {
+  let formHtml = `
+    <div class="space">
+      <h2>Qual palavra gostaria de remover?</h2>
+      <ul id="word-list">
+  `;
+
+  array.forEach((word, index) => {
+    formHtml += `
+      <li>
+        ${word}
+        <button onclick="removeWord(${index})"><i class="fa fa-minus" aria-hidden="true"></i> Remover</button>
+      </li>
+    `;
+  });
+
+  formHtml += `
+      </ul>
+    </div>
+  `;
+  
   document.getElementById('form-placement').innerHTML = formHtml;
 }
+
+
 
 
 function addWord(){
@@ -95,4 +109,16 @@ function addWord(){
   alert(new_word)
   array.push(` ${new_word}`)
   document.getElementById('array').innerHTML = array
+}
+
+function removeWord(index) {
+  array.splice(index, 1);
+  document.getElementById('array').innerHTML = array.join(', ');
+  showRemove();
+}
+
+function clearArray() {
+  array = [];
+  document.getElementById('array').innerHTML = '';
+  document.getElementById('form-placement').innerHTML = '';
 }
