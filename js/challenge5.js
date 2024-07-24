@@ -18,7 +18,7 @@ function rollDice(){
   var result = dado_1 + dado_2
 
   jogada.push(result)
-  alert(result)
+  alert(`Resultado da rolagem: ${result}`)
 
   console.log(jogada)
 
