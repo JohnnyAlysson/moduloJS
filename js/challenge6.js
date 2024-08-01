@@ -20,14 +20,31 @@
 
 // indicar a falha na autenticação..
 
-function autenticarUsuario(usuario,senha,sucesso,falha){
-  if (usuario == usuarioDB && senha == senhaDB){
-    return sucesso()
-  }
-  else if (usuario != usuarioDB && senha != senhaDB){
-    return falha()
-  }
+//Senhas e usuario hipoteticos armazernar senha em variaveis e inseguro e pode causar problemas
+function autenticarUsuario(username, password, onSuccess, onFailure){
+  const validUsername = 'usuario';
+  const validPassword = 'senha123';
+  if (username === validUsername && password === validPassword) {
+    onSuccess(username.toLowerCase());
+  } 
+  else {
+    onFailure();
+}
 }
 
-const sucesso = () => alert(`Usuário logado com sucesso\n Seja bem vindo ${usuario}`)
-const falha = () => alert(" Falha na autenticação..")
+const loginSuccess = (username) => {
+  console.log(`Login bem-sucedido! Bem-vindo, ${username}.`);
+  alert(`Login bem-sucedido! Bem-vindo, ${username}.`);
+};
+
+const loginFailure = () => {
+  console.log('Falha na autenticação. Por favor, verifique suas credenciais.');
+};
+
+
+function actionButton(){
+  console.log(input_usuario,input_senha)
+  console.log("botao funcionando")
+  return autenticarUsuario(input_usuario,input_senha,sucesso,falha)
+}
+
