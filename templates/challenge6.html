@@ -11,11 +11,14 @@
   <div class="container">
     <h1>Challenge 6</h1> 
 
-    <label for="usuario">Usuario:</label>
-    <input type="text" id="usuario" placeholder="Digite seu usuario">
-    <label for="senha">Senha:</label>
-    <input type="password" id="senha" placeholder="Digite seu senha">
-    <button onclick="actionButton()"><i class="fa fa-plus" aria-hidden="true"></i> Verificar senha</button>
+    
+      <label for="username">Usuario:</label>
+      <input type="text" id="username" name="username" placeholder="Digite seu usuario">
+      <label for="password">Senha:</label>
+      <input type="password" id="password" name="password" placeholder="Digite seu senha">
+      <button onclick="submitForm()" ><i class="fa fa-plus" aria-hidden="true"></i> Verificar senha</button>
+
+    <p id="message" style="background-color: rgb(163, 155, 155); padding: 2px; border-radius: 5px;"></p>
 
 
 

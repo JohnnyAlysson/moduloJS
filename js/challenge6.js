@@ -22,29 +22,33 @@
 
 //Senhas e usuario hipoteticos armazernar senha em variaveis e inseguro e pode causar problemas
 function autenticarUsuario(username, password, onSuccess, onFailure){
-  const validUsername = 'usuario';
-  const validPassword = 'senha123';
+  const validUsername = 'usuario'
+  const validPassword = 'senha123'
   if (username === validUsername && password === validPassword) {
-    onSuccess(username.toLowerCase());
+    onSuccess(username.toLowerCase())
   } 
   else {
-    onFailure();
+    onFailure()
 }
 }
 
 const loginSuccess = (username) => {
-  console.log(`Login bem-sucedido! Bem-vindo, ${username}.`);
-  alert(`Login bem-sucedido! Bem-vindo, ${username}.`);
-};
+  const messageElement = document.getElementById('message');
+  messageElement.textContent = `Login bem-sucedido! Bem-vindo, ${username}.`;
+  messageElement.style.color = 'green';
+}
 
 const loginFailure = () => {
-  console.log('Falha na autenticação. Por favor, verifique suas credenciais.');
+  const messageElement = document.getElementById('message');
+  messageElement.textContent = 'Falha na autenticação. Por favor, verifique suas credenciais.';
+  messageElement.style.color = 'red';
 };
 
 
-function actionButton(){
-  console.log(input_usuario,input_senha)
-  console.log("botao funcionando")
-  return autenticarUsuario(input_usuario,input_senha,sucesso,falha)
+const submitForm = () => {
+  const username = document.getElementById('username').value
+  const password = document.getElementById('password').value
+
+  autenticarUsuario(username, password, loginSuccess, loginFailure)
 }
 
