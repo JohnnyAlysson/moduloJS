@@ -24,13 +24,24 @@ function somaNum(){
 function showResult(soma){
   console.log("working")
   var resultado = document.getElementsByClassName("resultado")
-  resultado[0].innerText= `Resultado e ${soma}`
+  resultado[0].innerText = `Resultado e ${soma}`
 
 }
 
 // Atividade 03
 // Crie um elemento através do JavaScript, adicione um texto a ele e insira ele
 // no documento.
+
+var newDiv = document.createElement("div")
+var newparagrafo = document.createElement("p")
+newDiv.appendChild(newparagrafo)
+
+newparagrafo.classList.add("novaClasse")
+
+var elemento =getElementsByClassName("novaClasse")
+
+elemento[0].innerText = "Hadouken"
+
 
 
 
