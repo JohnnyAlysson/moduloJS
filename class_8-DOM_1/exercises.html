@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Class 8 - Dom 1</title>
+  <style>
+    .highlight { background-color: rgb(211, 211, 147); }
+  </style>
 </head>
 <body>
   <h1>Class 8 - Dom 1 exercises</h1>
@@ -24,8 +27,39 @@
 
   <p class="resultado" ></p>
 
+  <br>
+  <br>
 
+  <h1>Adicionar Elemento com JavaScript</h1>
+  <div id="container"></div>
 
+  <button onclick="addElement()">Adicionar Elemento</button>
+
+  <br>
+  <br>
+
+  <div >
+    <img id="img" style="max-width: 400px;" src="https://quero-ser-veterinario.s3.amazonaws.com/wp-content/uploads/2024/05/destaque-corgi-1024x576.webp" alt="">
+    <button onclick="changeImage()"> Alterar imagem</button>
+  </div>
+
+  <div name="exercicio 5">
+    <ul>
+      <li class="item">Item 1</li>
+      <li class="item" id="alteravel">Item 2</li>
+      <li>Item 3</li>
+  </ul>
+  <ul>
+      <li>Item A</li>
+      <li class="item">Item B</li>
+      <li>Item C</li>
+  </ul>
+  <button onclick="changeTexto()">Mudar elemento</button>
+  <div id="result-container">
+      <h2>Itens com a classe 'item':</h2>
+  </div>
+
+  </div>
 
   <script src="exercises.js"></script>
 </body>

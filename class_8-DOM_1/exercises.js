@@ -32,29 +32,53 @@ function showResult(soma){
 // Crie um elemento através do JavaScript, adicione um texto a ele e insira ele
 // no documento.
 
-var newDiv = document.createElement("div")
-var newparagrafo = document.createElement("p")
-newDiv.appendChild(newparagrafo)
+function addElement() {
+  // Cria um novo elemento div
+  const newDiv = document.createElement('div');
 
-newparagrafo.classList.add("novaClasse")
+  // Adiciona texto ao novo elemento
+  newDiv.innerText = 'Este é um novo elemento criado com JavaScript.';
 
-var elemento =getElementsByClassName("novaClasse")
-
-elemento[0].innerText = "Hadouken"
-
-
-
+  // Insere o novo elemento no documento
+  const container = document.getElementById('container');
+  container.appendChild(newDiv);
+}
 
 // Atividade 04
 
 // Altere o atributo src de uma tag img para trocar a imagem que ele está
 // apresentando através do JavaScript.
+function changeImage(){
+  let elementoImg = document.getElementById('img')
+  elementoImg.setAttribute('src',"https://t4.ftcdn.net/jpg/02/66/72/41/360_F_266724172_Iy8gdKgMa7XmrhYYxLCxyhx6J7070Pr8.jpg")
+}
 
 // Atividade 05
 // Pegue todos os elementos li de dentro de uma ul que tiverem a classe item
 // de dentro de uma ul.
 
+// note to self:  Seleciona todos os elementos <li> que têm a classe 'item' dentro de qualquer <ul>
+const items = document.querySelectorAll('ul li.item');
+
+const resultContainer = document.getElementById('result-container');
+
+// note to self: Itera sobre os elementos selecionados e adiciona-os ao contêiner
+items.forEach(item => {
+    const newItem = document.createElement('p'); // Cria um novo parágrafo
+    newItem.textContent = item.textContent; // Define o texto do parágrafo como o texto do item
+    newItem.classList.add('highlight'); // Adiciona uma classe para estilo
+    resultContainer.appendChild(newItem); // Adiciona o novo parágrafo ao contêiner
+});
+
+
 // Atividade 06
 
 // Crie uma função no JavaScript que irá trocar o texto de um elemento
 // que está em uma lista ul.
+
+function changeTexto(){
+  let elemento = document.getElementById("alteravel")
+
+  elemento.innerText= "Novo texto"
+
+}
