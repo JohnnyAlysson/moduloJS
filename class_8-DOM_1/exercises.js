@@ -64,10 +64,10 @@ const resultContainer = document.getElementById('result-container');
 
 // note to self: Itera sobre os elementos selecionados e adiciona-os ao contêiner
 items.forEach(item => {
-    const newItem = document.createElement('p'); // Cria um novo parágrafo
-    newItem.textContent = item.textContent; // Define o texto do parágrafo como o texto do item
-    newItem.classList.add('highlight'); // Adiciona uma classe para estilo
-    resultContainer.appendChild(newItem); // Adiciona o novo parágrafo ao contêiner
+    const newItem = document.createElement('p'); 
+    newItem.textContent = item.textContent; 
+    newItem.classList.add('highlight'); 
+    resultContainer.appendChild(newItem); 
 });
 
 
