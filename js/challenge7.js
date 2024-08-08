@@ -12,5 +12,49 @@
   // Dicas:  Use o método document.createElement para criar  elementos (li, input, button) dinamicamente.  
   // Ao marcar uma tarefa como concluída, modifique  seu estilo visualmente   (por exemplo, alterando a  cor ou adicionando uma classe CSS).  
   // Considere armazenar as tarefas em uma estrutura  de dados, como um array, para facilitar a  manipulação.
-
+  var lista = document.getElementById("taskList");
+  var conteudoForm = document.getElementById("task");
   
+  function addTask() {
+      const newItem = document.createElement('li');
+      const buttonDelete = document.createElement("button");
+      const checkbutton = document.createElement("input");
+      const textSpan = document.createElement("span");
+  
+      buttonDelete.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
+      buttonDelete.classList.add('deleteBTN');
+      buttonDelete.onclick = function() {
+          deleteTask(this);
+      };
+  
+      checkbutton.type = "checkbox";
+      checkbutton.onchange = function() {
+          toggleStrikethrough(this);
+      };
+  
+      textSpan.textContent = conteudoForm.value;
+  
+      newItem.appendChild(checkbutton);
+      newItem.appendChild(textSpan);
+      newItem.appendChild(buttonDelete);
+  
+      lista.appendChild(newItem);
+      conteudoForm.value = '';
+      console.log("Task added");
+  }
+  
+  function deleteTask(button) {
+      const listItem = button.parentNode;
+      lista.removeChild(listItem);
+      console.log("Task deleted");
+  }
+  
+  function toggleStrikethrough(checkbox) {
+      const textSpan = checkbox.nextElementSibling;
+      if (checkbox.checked) {
+          textSpan.style.textDecoration = "line-through";
+      } else {
+          textSpan.style.textDecoration = "none";
+      }
+      console.log("Strikethrough toggled");
+  }
