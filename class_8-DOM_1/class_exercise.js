@@ -12,17 +12,22 @@
 
 // paragrafo.innerHTML = "escrevendo no HTML"
 
-let h1 = document.querySelector("h1")
 
-let paragrafo = document.querySelector("#paragrafo")
+// /////// code 2
 
-let texto = document.querySelector(".texto")
+// let h1 = document.querySelector("h1")
 
-h1.innerHTML = "exemplo h1"
-paragrafo.innerHTML = "exemplo paragrafo"
-texto.innerHTML = "exemplo texto"
+// let paragrafo = document.querySelector("#paragrafo")
 
-let paragrafos = document.querySelectorAll(".minhaClasse")
+// let texto = document.querySelector(".texto")
 
-paragrafos[0].innerText = "Query all"
-paragrafos[1].innerText = "Query all 2"
+// h1.innerHTML = "exemplo h1"
+// paragrafo.innerHTML = "exemplo paragrafo"
+// texto.innerHTML = "exemplo texto"
+
+// let paragrafos = document.querySelectorAll(".minhaClasse")
+
+// paragrafos[0].innerText = "Query all"
+// paragrafos[1].innerText = "Query all 2"
+
+
