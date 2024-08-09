@@ -1,12 +1,58 @@
+// CLASS CHALLENGEtrocar a coor
+// Utilizar o tipo color para 
+function estilizarParagrafo(){
+  let cor = document.getElementById("corInput");
+  let valorCor = cor.value;
+
+  const paragrafo = document.getElementById("paragrafo");
+  paragrafo.style.color = valorCor;
+
+  valorCor = ""
+  console.log("working")
+};
+
+const estilizarBotao = document.getElementById("estilizarBotao");
+estilizarBotao.addEventListener('click',estilizarParagrafo);
+
 // Atividade 01
 // Crie uma caixa de entrada de texto e um botão. Quando o botão é clicado,
 // criar uma lista não ordenada (<ul>) e adicionar cada palavra digitada na
 // caixa de entrada como um novo item da lista (<li>).
+var lista = document.getElementById("taskList");
+var conteudoForm = document.getElementById("task");
+function addTask() {
+  const newItem = document.createElement('li');
+  const textSpan = document.createElement("span");
+
+  textSpan.textContent = conteudoForm.value;
+
+  newItem.appendChild(textSpan);
+
+  lista.appendChild(newItem);
+  conteudoForm.value = '';
+  console.log("Task added");
+}
 
 // Atividade 02
 
 // Crie um botão que, quando clicado, adiciona um novo parágrafo com um
 // texto personalizado.
+
+
+function addParagraph() {
+  var container = document.getElementById("container");
+  var conteudoForm = document.getElementById("task");
+  const newItem = document.createElement('div');
+  const textSpan = document.createElement("p");
+
+  textSpan.textContent = conteudoForm.value;
+
+  newItem.appendChild(textSpan);
+
+  container.appendChild(newItem);
+  conteudoForm.value = '';
+  console.log("Paragraph added");
+}
 
 // Atividade 03
 // Crie uma paleta de cores usando botões coloridos. Quando um botão de
