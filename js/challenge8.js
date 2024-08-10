@@ -8,3 +8,25 @@
 // mouse sair do item do menu, tanto o negrito quanto a cor de fundo devem ser 
 // restaurados. Utilize o evento ' mouseover ' e ' mouseout' para implementar esse 
 // comportamento e melhore a usabilidade do menu de navegação.
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  const menuItems = document.querySelectorAll(".menu-item");
+
+  function addHighlight(event) {
+      event.target.style.fontWeight = "bold";
+      event.target.style.backgroundColor = "#555";
+      event.target.style.borderRadius="10px";
+      
+  }
+
+  function removeHighlight(event) {
+      event.target.style.fontWeight = "normal";
+      event.target.style.backgroundColor = "";
+  }
+
+  menuItems.forEach(item => {
+      item.addEventListener("mouseover", addHighlight);
+      item.addEventListener("mouseout", removeHighlight);
+  });
+});

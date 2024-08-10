@@ -1,4 +1,4 @@
-  // DESAFIO PRÁTICO
+  // DESAFIO PRÁTICO AULA 8 Dom 1
 
   // Crie uma página HTML com uma caixa de entrada (input), um botão  "Adicionar Tarefa  "  e uma lista de  tarefas (ul).  
   // Escreva funções em JavaScript para realizar as  seguintes operações:  

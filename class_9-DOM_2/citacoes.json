@@ -1,0 +1,74 @@
+{
+  "citacoes": [
+    {
+      "texto": "A vida é aquilo que acontece enquanto você está ocupado fazendo outros planos.",
+      "autor": "John Lennon",
+      "estilo": {
+        "fonte": "Arial, sans-serif",
+        "tamanhoFonte": "20px",
+        "corTexto": "#3498db",
+        "fundo": "#ecf0f1",
+        "margem": "20px",
+        "borda": "2px solid #3498db",
+        "padding": "10px",
+        "borderRadius": "10px"
+      }
+    },
+    {
+      "texto": "O sucesso é ir de fracasso em fracasso sem perder o entusiasmo.",
+      "autor": "Winston Churchill",
+      "estilo": {
+        "fonte": "Georgia, serif",
+        "tamanhoFonte": "18px",
+        "corTexto": "#e74c3c",
+        "fundo": "#fbecec",
+        "margem": "30px",
+        "borda": "2px dashed #e74c3c",
+        "padding": "15px",
+        "borderRadius": "5px"
+      }
+    },
+    {
+      "texto": "A única forma de fazer um excelente trabalho é amar o que você faz.",
+      "autor": "Steve Jobs",
+      "estilo": {
+        "fonte": "Verdana, sans-serif",
+        "tamanhoFonte": "22px",
+        "corTexto": "#2ecc71",
+        "fundo": "#f0f3f4",
+        "margem": "25px",
+        "borda": "3px solid #2ecc71",
+        "padding": "20px",
+        "borderRadius": "15px"
+      }
+    },
+    {
+      "texto": "Não conte os dias, faça os dias contarem.",
+      "autor": "Muhammad Ali",
+      "estilo": {
+        "fonte": "Courier New, monospace",
+        "tamanhoFonte": "16px",
+        "corTexto": "#9b59b6",
+        "fundo": "#f5f3f5",
+        "margem": "15px",
+        "borda": "1px solid #9b59b6",
+        "padding": "12px",
+        "borderRadius": "8px"
+      }
+    },
+    {
+      "texto": "A maior glória em viver não está em nunca cair, mas em nos levantar a cada queda.",
+      "autor": "Nelson Mandela",
+      "estilo": {
+        "fonte": "Times New Roman, serif",
+        "tamanhoFonte": "24px",
+        "corTexto": "#e67e22",
+        "fundo": "#fcf3cf",
+        "margem": "40px",
+        "borda": "4px solid #e67e22",
+        "padding": "25px",
+        "borderRadius": "20px"
+      }
+    }
+  ]
+}

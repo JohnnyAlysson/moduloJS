@@ -1,3 +1,4 @@
+// Desafio Pratico Aula 6 Functions
 // Faça um programa que implemente um jogo de Craps. 
 // O jogador lança um par de dados, obtendo um valor entre 2 e 12. 
 // Se, na primeira jogada, você tirar 7 ou 11, você um " natural" e ganhou. Se você tirar 2, 3 ou 12 na primeira jogada, isto é chamado de " craps " e você perdeu. Se, na primeira jogada,

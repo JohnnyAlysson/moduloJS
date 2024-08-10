@@ -1,4 +1,5 @@
-// DESAFIO PRÁTICO  Você foi desafiado a criar um simulador de caixa eletrônico em JavaScript. 
+// DESAFIO PRÁTICO  Aula 3
+// Você foi desafiado a criar um simulador de caixa eletrônico em JavaScript. 
 // O programa deve permitir que o usuário interaja com sua conta bancária simulada, 
 // realizando operações como verificar o saldo, fazer saques, fazer  depósitos e sair do programa.  
 // Aqui estão os requisitos do programa: 

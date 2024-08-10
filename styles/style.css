@@ -144,3 +144,9 @@ ul li{
   color: white;
   margin-bottom: 1em;
 }
+
+.highlight{
+  background-color: #888;
+  font-weight: bold;
+  color: black;
+}
