@@ -12,15 +12,16 @@
 
     <div class="exercicio">
       <h2>Exercicio 1</h2>
-      <label for="email">Tarefa:</label>
-      <input type="text" id="email" name="email" placeholder="Digite seu nome">
-      <label for="name">Tarefa:</label>
-      <input type="text" id="name" name="name" placeholder="Digite seu nome">
-      <label for="password">Tarefa:</label>
-      <input type="password" id="password" name="password" placeholder="Digite sua senha">
+      <label for="email">Email: </label>
+      <input type="text" id="email" name="email" placeholder="Digite seu Email" required>
+      <label for="name">Name:</label>
+      <input type="text" id="username" name="name" placeholder="Digite seu nome" required>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" placeholder="Digite sua senha" required>
 
 
-      <button onclick="autenticar()">+ Adicionar tarefa</button>
+      <button onclick="submitForm()">Autenticar usuario</button>
+      <p id="message" style="background-color: rgb(163, 155, 155); padding: 2px; border-radius: 5px;"></p>
 
 
     </div>
