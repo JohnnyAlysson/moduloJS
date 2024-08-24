@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="./styles/style.css">
+</head>
+<body>
+
+  <div class="form-container">
+    <form class="form-container" action="">
+      <label for="name">Name:</label>
+      <input type="text" id="username" name="name" placeholder="Digite seu nome" required>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" placeholder="Digite sua senha" required>
+      <button onclick="submitForm()">Realizar login</button>
+  
+    </form>
+  
+    <a href="./login.html">Forgot your password?</a>
+    <a href="./cadastro.html">Signup</a>
+
+    <p><b>test credentials are saved on credentials.josn however you can find those in auth.js as well</b></p>
+
+  </div>
+
+
+
+  <script src="./js/auth.js"></script>
+</body>
+</html>
