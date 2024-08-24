@@ -16,11 +16,12 @@ function autenticar(username, password){
       localStorage.setItem('isLogggedIn','true');
       localStorage.setItem('currentUser',JSON.stringify(user))
       alert("login bem sucedido")
-      window.location.href = 'taskmanager.html';
+      window.location.href = './taskmanager.html';
       return user
     }
-    throw new Error('Usuário ou senha inválidos')
     loginFailure()
+    throw new Error('Usuário ou senha inválidos')
+    
   })
 }
 
