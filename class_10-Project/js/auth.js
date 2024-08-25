@@ -16,10 +16,10 @@ function autenticar(username, password){
       localStorage.setItem('isLogggedIn','true');
       localStorage.setItem('currentUser',JSON.stringify(user))
       alert("login bem sucedido")
-      window.location.href = 'taskmanager.html';
+      window.location.href = './taskmanager.html';
       return user
     }
-    loginFailure()
+    alert("Usuário ou senha inválidos")
     throw new Error('Usuário ou senha inválidos')
     
   })
@@ -38,12 +38,6 @@ function getCurrentUser(){
   }
   return null
 }
-
-const loginFailure = () => {
-  const messageElement = document.getElementById('message');
-  messageElement.textContent = 'Falha na autenticação. Por favor, verifique suas credenciais.';
-  messageElement.style.color = 'red';
-};
 
 const submitForm = () => {
   const username = document.getElementById('username').value;

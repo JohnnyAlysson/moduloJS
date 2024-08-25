@@ -16,6 +16,19 @@
     transition:  ease-in-out 0.3s;
   }
 
+  a{
+    text-decoration: none;
+    color: black;
+    background-color: #828cb7;
+    border-radius: 10px;
+    align-self: center;
+    padding: 5px;
+  }
+  a:hover{
+    background-color: #cbd2f4;
+    
+  }
+
   /* Style all input fields */
 input {
   width: 100%;
