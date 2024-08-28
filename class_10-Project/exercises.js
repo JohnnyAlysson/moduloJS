@@ -54,12 +54,47 @@ const cleanForm = () =>{
 // botão, adicione um novo elemento à página com o texto digitado no
 // campo de texto.
 
+let addtextBTN = document.getElementById("addtextBTN")
+
+addtextBTN.addEventListener("click",() =>{
+  var container = document.getElementById("textContainer");
+  var conteudoForm = document.getElementById("conteudo");
+  const textSpan = document.createElement("p");
+
+  textSpan.textContent = conteudoForm.value;
+
+  container.appendChild(textSpan);
+  conteudoForm.value = '';
+  console.log("Paragraph added");
+})
+
 
 
 // Atividade 03
 // Crie uma função que recebe um array de números e retorna a soma deles.
 
+let sumBTN =document.getElementById("sumBTN");
+
+sumBTN.addEventListener("click",() =>{
+  let numeros = document.getElementById("numeros").value;
+  console.log(numeros);
+  let listaNumeros = numeros.split(",");
+  console.log(listaNumeros);
+  var sum = 0;
+  for(var i = 0 ; i < listaNumeros.lenght; i++){
+    sum += Number(listaNumeros[i]);
+    console.log("working");
+    console.log(listaNumeros[i],sum);
+  }
+  let resultado = document.getElementById("resultado");
+  resultado.innerHTML = sum;
+  console.log("sum", sum);
+})
+
 // Atividade 04
 // Crie uma função que calcula o Índice de Massa Corporal (IMC) e
 // retorna se a pessoa está abaixo do peso, no peso ideal ou acima do
 // peso.
+
+
+//Realizado em outro arquivo, copiar link
