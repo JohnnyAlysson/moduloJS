@@ -18,3 +18,8 @@
 // Comentários:
 // Adicione a capacidade de os usuários deixarem
 // comentários nas postagens.
+
+// EXTRA CHALLENGE:
+// aba de postagem bonito com titulo,com rich text editor simples, com sistema de tag, visualizar postagem e comentar postagem (com modal)
+// sistema de pesquisa, sistema de paginas com limites de publicacoes visualizadas, comentario e postagens com data e hora, deletar e com possibilidade de excluir.
+// adicionar imagem

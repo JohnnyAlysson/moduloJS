@@ -1,8 +1,14 @@
 // Desafio pratico Aula 1
 
 
-let name = prompt("Digite seu nome:")
-
+let nameUser = prompt("Digite seu nome:")
 let message = document.getElementById("resultado")
 
-message.textContent = `Seja bem vindo ${name}`
+if (nameUser === null || nameUser === ""){
+  message.textContent = `Seja bem vindo querido(a)`
+}
+else{
+  message.textContent = `Seja bem vindo ${nameUser}`
+}
+
+
