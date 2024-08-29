@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Class exercise</title>
+  </head>
+  <body>
+  <h1>Class exercise</h1>
+    <p><input type="number" id="ageToCheck" value="30"></p>
+    <button onclick="myFunction()">Try it</button>
+    <p id="demo"></p>
+    <script>
+        const ages = [32,33,12,40]
+
+        function checkAge(age){
+            return age > document.getElementById("ageToCheck").value;
+        }
+
+        function myFunction(){
+            document.getElementById("demo").innerHTML = ages.filter(checkAge);
+        }
+    </script>
+</body>
+</html>
