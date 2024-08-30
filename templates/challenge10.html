@@ -3,64 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Challenge 8</title>
+  <title>Challenge 10- Mini blog</title>
   <script src="https://kit.fontawesome.com/e817e6100b.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="../styles/style.css">
-
-  <style>
-    
-    body, ul {
-        margin: 0;
-        padding: 0;
-    }
-
-    nav {
-        background-color: #333;
-        border-radius: 10px;
-    }
-
-    .menu-list {
-        list-style-type: none;
-        display: flex;
-        justify-content: center;
-    }
-
-    .menu-list li {
-        margin: 0 15px;
-    }
-
-    .menu-item {
-        text-decoration: none;
-        color: #fff;
-        font-size: 18px;
-        padding: 10px 15px;
-        display: block;
-        transition: background-color 0.3s, font-weight 0.3s;
-    }
-
-  </style>
+  <link rel="stylesheet" href="../styles/blog.css">
 </head>
 <body>
   <div class="container">
-    <h1>Challenge 8</h1> 
-
-    <nav>
-      <ul class="menu-list">
-        <li><a href="#home" class="menu-item">Início</a></li>
-        <li><a href="#about" class="menu-item">Sobre</a></li>
-        <li><a href="#services" class="menu-item">Serviços</a></li>
-        <li><a href="#contact" class="menu-item">Contato</a></li>
-      </ul>
-    </nav>
-
-
-
-    <a href="../index.html">
-      <button class="home">
-      <i  class="fa-solid fa-house"></i>
-      </button>
-    </a>
+      <h1>Mini Blog</h1>
+      <div id="posts-container">
+          <h2>Posts</h2>
+          <div id="posts-list"></div>
+      </div>
+      <div id="new-post-form">
+          <h2>Add New Post</h2>
+          <form id="post-form">
+              <input type="text" id="post-title" placeholder="Post Title" required>
+              <input type="date" id="post-date" required>
+              <textarea id="post-content" placeholder="Post Content" required></textarea>
+              <button type="submit">Submit Post</button>
+          </form>
+      </div>
   </div>
-  <script src="../js/challenge8.js"></script>
+  <script src="../js/challenge10.js"></script>
 </body>
 </html>
