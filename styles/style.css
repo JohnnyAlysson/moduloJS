@@ -150,3 +150,20 @@ ul li{
   font-weight: bold;
   color: black;
 }
+
+.comment-list li {
+  background: #fff;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid var(--color-accent1);
+}
+
+.comment-list li p {
+  margin: 0 0 5px 0;
+}
+
+.comment-list li small {
+  color: var(--color-accent2);
+  font-style: italic;
+}
