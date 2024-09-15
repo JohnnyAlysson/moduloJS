@@ -49,12 +49,22 @@ form {
   flex-direction: column;
 }
 
-input, textarea {
+input, #post-content {
   margin-bottom: 10px;
   padding: 10px;
   border: 1px solid var(--color-accent1);
   border-radius: 5px;
   background-color: #fff;
+}
+
+#post-content {
+  min-height: 100px;
+  overflow-y: auto;
+}
+
+#post-content[placeholder]:empty:before {
+  content: attr(placeholder);
+  color: #555;
 }
 
 button {
@@ -149,4 +159,38 @@ button:hover {
 
 .view-post {
   margin-top: 10px;
+}
+
+/* Rich text editor styles */
+#rich-text-toolbar {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+#rich-text-toolbar button {
+  background-color: var(--color-accent2);
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: background-color 0.3s ease;
+}
+
+#rich-text-toolbar button:hover {
+  background-color: var(--color-accent1);
+}
+
+#rich-text-toolbar button.active {
+  background-color: var(--color-accent1);
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+#post-content {
+  border: 1px solid var(--color-accent1);
+  min-height: 150px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: white;
 }

@@ -19,11 +19,6 @@
 // Adicione a capacidade de os usuários deixarem
 // comentários nas postagens.
 
-// EXTRA CHALLENGE:
-// aba de postagem bonito com titulo,com rich text editor simples, com sistema de tag, visualizar postagem e comentar postagem (com modal)
-// sistema de pesquisa, sistema de paginas com limites de publicacoes visualizadas, comentario e postagens com data e hora, deletar e com possibilidade de excluir.
-// adicionar imagem
-
 document.addEventListener('DOMContentLoaded', () => {
     const postsContainer = document.getElementById('posts-list');
     const postForm = document.getElementById('post-form');
@@ -75,17 +70,27 @@ document.addEventListener('DOMContentLoaded', () => {
             postElement.classList.add('post');
             postElement.innerHTML = `
                 <h3>${post.title}</h3>
-                <p>${post.content.substring(0, 100)}${post.content.length > 100 ? '...' : ''}</p>
+                <p>${stripHtml(post.content).substring(0, 100)}${stripHtml(post.content).length > 100 ? '...' : ''}</p>
                 <small>Published on: ${formatDate(post.publishedOn)}</small>
                 <button class="view-post" data-post-id="${post.id}">View Post</button>
+                <button class="delete-post" data-post-id="${post.id}">Delete Post</button>
             `;
             postsContainer.appendChild(postElement);
         });
 
-        // Add event listeners to view post buttons
         document.querySelectorAll('.view-post').forEach(button => {
             button.addEventListener('click', openPostModal);
         });
+
+        document.querySelectorAll('.delete-post').forEach(button => {
+            button.addEventListener('click', deletePost);
+        });
+    }
+
+    function stripHtml(html) {
+        const tmp = document.createElement('DIV');
+        tmp.innerHTML = html;
+        return tmp.textContent || tmp.innerText || '';
     }
 
     function openPostModal(e) {
@@ -96,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="modal-content">
                     <span class="close-modal">&times;</span>
                     <h2>${post.title}</h2>
-                    <p>${post.content}</p>
+                    <div>${post.content}</div>
                     <small>Published on: ${formatDate(post.publishedOn)}</small>
                     <div class="comments">
                         <h4>Comments:</h4>
@@ -118,10 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
             modalContainer.innerHTML = modalContent;
             modalContainer.style.display = 'block';
 
-            // Add event listener to close modal
             document.querySelector('.close-modal').addEventListener('click', closeModal);
-
-            // Add event listener to comment form
             document.querySelector('.comment-form').addEventListener('submit', addComment);
         }
     }
@@ -133,15 +135,16 @@ document.addEventListener('DOMContentLoaded', () => {
     function addNewPost(e) {
         e.preventDefault();
         const newPost = {
-            id: posts.length + 1,
+            id: posts.length > 0 ? Math.max(...posts.map(p => p.id)) + 1 : 1,
             title: postTitle.value,
-            content: postContent.value,
+            content: postContent.innerHTML,
             publishedOn: postDate.value,
             comments: []
         };
         posts.push(newPost);
         renderPosts();
         postForm.reset();
+        postContent.innerHTML = '';
     }
 
     function addComment(e) {
@@ -157,20 +160,70 @@ document.addEventListener('DOMContentLoaded', () => {
                 date: new Date().toISOString()
             };
             post.comments.push(newComment);
-            openPostModal({ target: { getAttribute: () => postId } }); // Refresh the modal
+            openPostModal({ target: { getAttribute: () => postId.toString() } });
         }
 
         commentInput.value = '';
+    }
+
+    function deletePost(e) {
+        const postId = parseInt(e.target.getAttribute('data-post-id'));
+        if (confirm('Are you sure you want to delete this post?')) {
+            posts = posts.filter(post => post.id !== postId);
+            renderPosts();
+        }
     }
 
     postForm.addEventListener('submit', addNewPost);
 
     renderPosts();
 
-    // Close modal when clicking outside of it
     window.addEventListener('click', (e) => {
         if (e.target === modalContainer) {
             closeModal();
         }
     });
+
+    const toolbar = document.getElementById('rich-text-toolbar');
+    const buttons = toolbar.querySelectorAll('button');
+
+    toolbar.addEventListener('click', (e) => {
+        if (e.target.tagName === 'BUTTON' || e.target.parentElement.tagName === 'BUTTON') {
+            const button = e.target.tagName === 'BUTTON' ? e.target : e.target.parentElement;
+            const command = button.getAttribute('data-command');
+            document.execCommand(command, false, null);
+            postContent.focus();
+            updateActiveButtons();
+        }
+    });
+
+    postContent.addEventListener('keyup', updateActiveButtons);
+    postContent.addEventListener('mouseup', updateActiveButtons);
+
+    function updateActiveButtons() {
+        buttons.forEach(button => {
+            const command = button.getAttribute('data-command');
+            if (document.queryCommandState(command)) {
+                button.classList.add('active');
+            } else {
+                button.classList.remove('active');
+            }
+        });
+    }
+
+    postContent.addEventListener('focus', function() {
+        if (this.innerHTML === this.getAttribute('placeholder')) {
+            this.innerHTML = '';
+        }
+        updateActiveButtons();
+    });
+
+    postContent.addEventListener('blur', function() {
+        if (this.innerHTML === '') {
+            this.innerHTML = this.getAttribute('placeholder');
+        }
+        updateActiveButtons();
+    });
+
+    postContent.innerHTML = postContent.getAttribute('placeholder');
 });

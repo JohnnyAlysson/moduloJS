@@ -9,7 +9,7 @@
 </head>
 <body>
   <div class="container">
-    <h1>Mini Blog</h1>
+    <h1>Mini Blog - Challenge 10</h1>
 
     <div id="posts-container">
         <h2>Posts</h2>
@@ -22,7 +22,14 @@
         <form id="post-form">
             <input type="text" id="post-title" placeholder="Title" required>
             <input type="date" id="post-date" required>
-            <textarea id="post-content" placeholder="Content" required></textarea>
+            <div id="rich-text-toolbar">
+                <button type="button" data-command="bold"><i class="fas fa-bold"></i></button>
+                <button type="button" data-command="italic"><i class="fas fa-italic"></i></button>
+                <button type="button" data-command="underline"><i class="fas fa-underline"></i></button>
+                <button type="button" data-command="insertUnorderedList"><i class="fas fa-list-ul"></i></button>
+                <button type="button" data-command="insertOrderedList"><i class="fas fa-list-ol"></i></button>
+            </div>
+            <div id="post-content" contenteditable="true" placeholder="Content"></div>
             <button type="submit">Submit Post</button>
         </form>
     </div>
