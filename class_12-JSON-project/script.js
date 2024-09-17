@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', () => {
     const bookGrid = document.getElementById('bookGrid');
     const searchInput = document.getElementById('search');
