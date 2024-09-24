@@ -10,8 +10,9 @@
 // Link de onde encontrar API:https://api.github.com/
 // Link da API: https://api.github.com/users/{seu_usuario}
 const user = document.getElementById("user");
+const btnUser = document.getElementById("getInfo");
 
-addEventListener("click", (e) => {
+btnUser.addEventListener("click", (e) => {
   e.preventDefault();
   
   const userValue = user.value;
@@ -51,6 +52,46 @@ addEventListener("click", (e) => {
 // encontrar API: https://viacep.com.br/
 // Link da API:https://viacep.com.br/ws/{seu_cep}/json/
 
+const cep = document.getElementById("cep");
+const btnCep = document.getElementById("getCepinfo")
+
+btnCep.addEventListener("click", (e) => {
+  e.preventDefault();
+  
+  const cepValue = cep.value.trim();
+  const logradouroInfo = document.getElementById("logradouro")
+  const bairroInfo = document.getElementById("bairro")
+  const localidadeInfo = document.getElementById("localidade")
+  const estadoInfo = document.getElementById("estado")
+
+  fetch(`https://viacep.com.br/ws/${cepValue}/json/`)
+  // fetch(`viacep.com.br/ws/${cepValue}/json/`)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error("It wasn't possible to continue your request");
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log(data.cepValue);
+      console.log(data.logradouro);
+      console.log(data.bairro);
+      console.log(data.localidade);
+      console.log(data.estado);
+
+      logradouroInfo.innerHTML = data.logradouro
+      bairroInfo.innerHTML = data.bairro
+      localidadeInfo.innerHTML = data.localidade
+      estadoInfo.innerHTML = data.estado
+      
+
+    })
+    .catch(error => {
+      console.error(`Error: ${error}`);
+    });
+});
+
+
 // ATIVIDADE PRÁTICA
 
 // Atividade 03
@@ -59,3 +100,41 @@ addEventListener("click", (e) => {
 // nome ou número da Pokédex.
 // Link de onde encontrar API: https://pokeapi.co/docs/v2
 // Link da API:https://pokeapi.co/api/v2/pokemon/{nome_pokemon}
+
+const pokemon = document.getElementById("pokemon");
+const btnpokemon = document.getElementById("getInfoPKM");
+
+btnpokemon.addEventListener("click", (e) => {
+  e.preventDefault();
+  
+  const pokemonValue = pokemon.value.toLowerCase();
+  const pokemonName = document.getElementById("PKM")
+  const pokemonHeight = document.getElementById("height")
+  const pokemonWeight = document.getElementById("weight")
+  const pokemonImage = document.getElementById("imagePKM")
+
+  fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonValue}`)
+    .then(response => {
+      if (!response.ok) {
+        pokemonName.innerHTML = "pokemon nao encontrado tente novamente"
+        pokemonName.style.color= "red"
+        throw new Error("It wasn't possible to continue your request");
+
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log(data.name);
+      console.log(data.sprites.front_default);
+      console.log(data.height);
+      console.log(data.weight);
+      pokemonName.innerHTML = data.name.toUpperCase()
+      pokemonName.style.color= "green"
+      pokemonHeight.innerHTML = data.height
+      pokemonWeight.innerHTML = data.weight
+      pokemonImage.src = data.sprites.front_default
+    })
+    .catch(error => {
+      console.error(`Error: ${error}`);
+    });
+});

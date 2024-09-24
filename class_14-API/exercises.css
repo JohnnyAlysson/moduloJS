@@ -67,3 +67,83 @@
     height: 100px;
   }
 }
+
+.containerpkm{
+  display: flex;
+  justify-content: center;
+
+}
+
+.PKMexercicio {
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 300px;
+  text-align: center;
+}
+
+.PKMexercicio h2 {
+  color: #ff4757;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.PKMexercicio label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.PKMexercicio input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #ff4757;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  transition: border-color 0.3s;
+}
+
+.PKMexercicio input[type="text"]:focus {
+  border-color: #2ed573;
+  outline: none;
+}
+
+.PKMexercicio button {
+  background-color: #ff4757;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.PKMexercicio button:hover {
+  background-color: #ff6b81;
+}
+
+.PKMexercicio h1 {
+  color: #2f3542;
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.PKMexercicio h2 {
+  color: #2ed573;
+  font-size: 20px;
+  margin: 5px 0 15px;
+}
+
+.PKMexercicio img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.PKMexercicio .separator {
+  height: 20px;
+  width: 100%;
+}
