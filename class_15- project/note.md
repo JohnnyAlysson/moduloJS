@@ -38,7 +38,7 @@ mais necessários
 backlog:
 
 
-contato?
+exportar 
 validacao de dados
 paginacao (10 por pagina)
 deleter em massa
@@ -48,3 +48,4 @@ finished:
 ~ adinicoar contato~ 
 modal para editar contato
 mensagem de confirmacao para deletar 
+contato?
