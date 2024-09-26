@@ -1,0 +1,130 @@
+:root {
+  --primary-color: #543081;
+  --secondary-color: #3700b3;
+  --background-color: #121212;
+  --surface-color: #1E1E1E;
+  --text-color: #FFFFFF;
+  --text-secondary-color: #B0B0B0;
+  --border-radius: 12px;
+  --transition: all 0.3s ease;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.container {
+  background-color: var(--surface-color);
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+input, button {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 1rem;
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+input {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--text-color);
+}
+
+input::placeholder {
+  color: var(--text-secondary-color);
+}
+
+button {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  cursor: pointer;
+  font-weight: 600;
+}
+
+button:hover {
+  background-color: var(--secondary-color);
+}
+
+#message {
+  text-align: center;
+  margin-bottom: 1rem;
+  min-height: 1.5em;
+}
+
+.cards {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.card {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: var(--border-radius);
+  padding: 1rem;
+  flex: 1;
+  text-align: center;
+  transition: var(--transition);
+}
+
+.card h2 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-secondary-color);
+}
+
+#playerNumber, #computerNumber {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.hidden {
+  background-color: var(--primary-color);
+}
+
+.hidden p {
+  visibility: hidden;
+}
+
+#newGame {
+  margin-top: 1rem;
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .cards {
+    flex-direction: column;
+  }
+}
