@@ -1,0 +1,82 @@
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 500px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.modal input {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.modal button {
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.modal button:hover {
+  background-color: #555;
+}
+
+#deleteModal .modal-content {
+  text-align: center;
+}
+
+#deleteModal p {
+  margin-bottom: 20px;
+}
+
+#cancelDelete {
+  background-color: #ccc;
+  color: #333;
+}
+
+#cancelDelete:hover {
+  background-color: #bbb;
+}

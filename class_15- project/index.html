@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciador de Contatos</title>
+    <link rel="stylesheet" href="./styles/modal.css">
+    <link rel="stylesheet" href="./styles/style.css">
+</head>
+<body>
+    <div class="sidebar">
+        <h1>Gerenciador de contatos</h1>
+        <ul>
+            <li><a href="#" id="contactListLink">Lista de contatos</a></li>
+            <li><a href="#" id="addContactLink">Adicionar Contato</a></li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <h2>Lista de Contatos</h2>
+        <form id="contactForm" style="display: none;">
+            <input type="text" name="nome" placeholder="Nome">
+            <input type="email" name="email" placeholder="Email">
+            <input type="tel" name="telefone" placeholder="Telefone">
+            <button type="submit">Adicionar contato</button>
+        </form>
+        <div id="containerLista"></div>
+    </div>
+
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Editar Contato</h2>
+            <input type="text" id="editName" placeholder="Nome">
+            <input type="email" id="editEmail" placeholder="Email">
+            <input type="tel" id="editPhone" placeholder="Telefone">
+            <button id="saveChanges">Salvar Alterações</button>
+        </div>
+    </div>
+
+    <div id="deleteModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Confirmar Exclusão</h2>
+            <p id="deleteConfirmationMessage"></p>
+            <button id="confirmDelete">Excluir</button>
+            <button id="cancelDelete">Cancelar</button>
+        </div>
+    </div>
+
+    <script type="module" src="./js/main.js"></script>
+</body>
+</html>

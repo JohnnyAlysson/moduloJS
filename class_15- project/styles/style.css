@@ -1,0 +1,121 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  background-color: #f0f0f0;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  height: 100vh;
+}
+
+.sidebar h1 {
+  margin-top: 0;
+  font-size: 24px;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin-bottom: 10px;
+}
+
+.sidebar a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.sidebar a:hover, .sidebar a.active {
+  background-color: #555;
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
+}
+
+.main-content h2 {
+  margin-top: 0;
+}
+
+#contactForm {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+
+#contactForm input {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+#contactForm button {
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#contactForm button:hover {
+  background-color: #555;
+}
+
+#containerLista {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.contact-card {
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.contact-card p {
+  margin: 5px 0;
+}
+
+.contact-card button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  margin-right: 5px;
+}
+
+.contact-card button:hover {
+  background-color: #f0f0f0;
+  border-radius: 4px;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.8em;
+  margin-top: -5px;
+  margin-bottom: 10px;
+}
+
+input.error {
+  border-color: red;
+}
