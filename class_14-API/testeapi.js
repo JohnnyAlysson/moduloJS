@@ -7,13 +7,12 @@ async function fetchWeather() {
         const response = await fetch(url);
         const data = await response.json();
 
-        // Extracting key data
+
         const location = `${data.location.name}, ${data.location.country}`;
         const temperature = `${data.current.temperature}°C`;
         const weatherDescription = data.current.weather_descriptions[0];
         const weatherIcon = data.current.weather_icons[0];
 
-        // Updating HTML elements with the data
         document.getElementById('location').textContent = `Location: ${location}`;
         document.getElementById('temperature').textContent = `Temperature: ${temperature}`;
         document.getElementById('description').textContent = `Weather: ${weatherDescription}`;
