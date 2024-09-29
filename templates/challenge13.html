@@ -5,15 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Challenge 13- IMDB</title>
   <script src="https://kit.fontawesome.com/e817e6100b.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="../styles/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles/movies.css">
 </head>
 <body>
   <div class="container">
     <h1>Desafio 13 - Movies</h1>
 
 
-      <input type="text" id="nomeFilme" placeholder="Qual filme deseja pequisar?">
-      <button id="btnMovie">Pesquisar</button>
+    <h1>Catálogo de Filmes</h1>
+    <form id="searchForm">
+        <input type="text" id="searchInput" placeholder="Buscar filme">
+        <button type="submit">Buscar</button>
+    </form>
+    <div id="movieList"></div>
+    <div id="movieDetails"></div>
+
+    <div class="homeBTNContainer">
+      <button id="homeBTN" href="#" >Home <i  class="fa-solid fa-house"></i></button>
+    </div>
 
   </div>
 

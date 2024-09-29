@@ -26,22 +26,71 @@
 // A interface deve ser atraente e responsiva.
 // URL do link da API: https://www.themoviedb.org/
 
-let movie = document.getElementById("nomeFilme")
-let movieValue = movie.value
-const btn = document.getElementById("btnMovie")
+const apiKey = 'c5006d3d9a7899468a5ed138c5302a93';
+const baseUrl = 'https://api.themoviedb.org/3';
+const imageBaseUrl = 'https://image.tmdb.org/t/p/w500';
 
-btn.addEventListener("click", () => {
-    const options = {
-        method: 'GET',
-        headers: {
-            accept: 'application/json',
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjNTAwNmQzZDlhNzg5OTQ2OGE1ZWQxMzhjNTMwMmE5MyIsIm5iZiI6MTcyNzQwMTg2Ny4wMjA1MzEsInN1YiI6IjY2ZjYwZWFhN2IzMDcyNjg4ZDk2NGUyNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.fUCROxujXpRvfeB9oVxPxX-i_JxqWG0aL-4gdpE-N4I'
-        }
-    };
+const searchForm = document.getElementById('searchForm');
+const searchInput = document.getElementById('searchInput');
+const movieList = document.getElementById('movieList');
+const movieDetails = document.getElementById('movieDetails');
+const homeBTN = document.getElementById('homeBTN')
 
+fetchPopularMovies();
 
-    fetch(`https://api.themoviedb.org/3/search/movie?query=${movieValue}&api_key=c5006d3d9a7899468a5ed138c5302a93`, options)
+searchForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const query = searchInput.value.trim();
+    if (query) {
+        searchMovies(query);
+    }
+});
+
+homeBTN.addEventListener("click", fetchPopularMovies)
+
+function fetchPopularMovies() {
+    fetch(`${baseUrl}/movie/popular?api_key=${apiKey}&language=pt-BR`)
         .then(response => response.json())
-        .then(response => console.log(response))
-        .catch(err => console.error(err));
-})
+        .then(data => displayMovies(data.results))
+        .catch(err => console.error('Erro ao buscar filmes populares:', err));
+}
+
+function searchMovies(query) {
+    fetch(`${baseUrl}/search/movie?api_key=${apiKey}&query=${query}&language=pt-BR`)
+        .then(response => response.json())
+        .then(data => displayMovies(data.results))
+        .catch(err => console.error('Erro na busca:', err));
+}
+
+function displayMovies(movies) {
+    movieList.innerHTML = '';
+    movies.forEach(movie => {
+        const movieCard = document.createElement('div');
+        movieCard.classList.add('movie-card');
+        movieCard.innerHTML = `
+            <img src="${imageBaseUrl}${movie.poster_path}" alt="${movie.title}">
+            <h3>${movie.title}</h3>
+        `;
+        movieCard.addEventListener('click', () => fetchMovieDetails(movie.id));
+        movieList.appendChild(movieCard);
+    });
+}
+
+function fetchMovieDetails(movieId) {
+    fetch(`${baseUrl}/movie/${movieId}?api_key=${apiKey}&language=pt-BR&append_to_response=credits`)
+        .then(response => response.json())
+        .then(data => displayMovieDetails(data))
+        .catch(err => console.error('Erro ao buscar detalhes do filme:', err));
+}
+
+function displayMovieDetails(movie) {
+    const cast = movie.credits.cast.slice(0, 5).map(actor => actor.name).join(', ');
+    movieDetails.scrollIntoView({behavior:"smooth"})
+    movieDetails.innerHTML = `
+        <h2>${movie.title} (${movie.release_date.slice(0, 4)})</h2>
+        <p><strong>Gênero:</strong> ${movie.genres.map(genre => genre.name).join(', ')}</p>
+        <p><strong>Avaliação:</strong> ${movie.vote_average}/10</p>
+        <p><strong>Sinopse:</strong> ${movie.overview}</p>
+        <p><strong>Elenco principal:</strong> ${cast}</p>
+    `;
+}
