@@ -19,7 +19,7 @@ let computerNumber;
 let attempts = 0;
 
 function generateRandomNumber() {
-    return Math.floor(Math.random() * 10) + 1;
+    return Math.floor(Math.random() * 100) + 1;
 }
 
 function startNewGame() {
