@@ -55,28 +55,24 @@ function validateForm() {
   const emailInput = contactForm.querySelector('input[name="email"]');
   const telefoneInput = contactForm.querySelector('input[name="telefone"]');
 
-  // Reset error messages
   clearErrorMessages();
 
   let isValid = true;
 
-  // Name validation (not empty)
   if (nomeInput.value.trim() === '') {
     displayErrorMessage(nomeInput, 'Nome é obrigatório');
     isValid = false;
   }
 
-  // Email validation
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(emailInput.value)) {
     displayErrorMessage(emailInput, 'Email inválido');
     isValid = false;
   }
 
-  // Phone validation (Brazilian format)
   const phoneRegex = /^(\+55|55)?(\d{2})?\d{9}$/;
   if (!phoneRegex.test(telefoneInput.value.replace(/\D/g, ''))) {
-    displayErrorMessage(telefoneInput, 'Número de telefone inválido');
+    displayErrorMessage(telefoneInput, 'Número de telefone inválido, lembre-se de adicionar um número no formato brasileiro');
     isValid = false;
   }
 
