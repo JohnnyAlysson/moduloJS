@@ -47,6 +47,7 @@
 
 
 //implementacoes novas:
+// - Adicionar a foto em imagens
 // - Adicionar a lista de desejos (ou favoritos)
 // - sistema de catalogo com estoque de livros
 // - sistema para contabilizar 
