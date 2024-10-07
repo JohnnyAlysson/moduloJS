@@ -1,6 +1,6 @@
 # Livraria
 
-// repositorio original: https://github.com/in100tiva/Livraria
+- repositorio original: https://github.com/in100tiva/Livraria
 //  Projeto de catálogos de livros online
 // Desenvolva um sistema de catálogo de livros online que permita
 // aos usuários visualizar, adicionar, buscar e classificar livros. As
@@ -40,14 +40,19 @@
 
 // Permita aos usuários atribuir avaliações aos livros existentes.
 
-// Salvar e Carregar do Arquivo JSON:
-
-// Implemente funções para salvar as alterações no arquivo JSON
-// e carregar os dados existentes ao iniciar o programa.
 
 
 //implementacoes novas:
-// - Adicionar a foto em imagens
 // - Adicionar a lista de desejos (ou favoritos)
-// - sistema de catalogo com estoque de livros
-// - sistema para contabilizar 
+
+funções implementadas
+
+// - Adicionar a foto em imagens
+// Salvar e Carregar do Arquivo JSON:
+// Implemente funções para salvar as alterações no arquivo JSON
+// e carregar os dados existentes ao iniciar o programa.
+// - adicionar validação caso nao seja adicionar uma imagem salvar com placeholder
+// - Opção de deletar review 
+// - Opção de deletar livro
+
+bug : Codigo sempre carrega arquivo original em json, nao importa se deletado ou nao
