@@ -1,58 +1,65 @@
-# Livraria
+# Catálogo de Livros Online / Online Book Catalog
 
-- repositorio original: https://github.com/in100tiva/Livraria
-//  Projeto de catálogos de livros online
-// Desenvolva um sistema de catálogo de livros online que permita
-// aos usuários visualizar, adicionar, buscar e classificar livros. As
-// informações dos livros devem ser armazenadas em um arquivo
-// JSON. Cada livro deve conter detalhes como título, autor, gênero,
-// ano de publicação e avaliações dos usuários.
+## Português
 
-// PROJETO
+### Sobre o Projeto
+Este é um sistema de catálogo de livros online que permite aos usuários visualizar, adicionar, buscar e classificar livros. As informações dos livros são armazenadas localmente e podem ser exportadas para um arquivo JSON.
 
-// Funcionalidades:
+### Funcionalidades
+- Listar Livros: Exibe todos os livros disponíveis no catálogo.
+- Adicionar Livro: Permite aos usuários adicionar novos livros ao catálogo.
+- Buscar Livro: Possibilita encontrar livros com base no título, autor ou gênero.
+- Classificar Livros: Ordena os livros por título, autor ou avaliação.
+- Avaliar Livro: Permite aos usuários atribuir avaliações aos livros existentes.
+- Lista de Favoritos: Os usuários podem marcar livros como favoritos.
+- Gerenciamento de Imagens: Suporta adição de capas de livros, com uma imagem padrão para livros sem capa.
+- Salvar e Carregar: Salva alterações localmente e carrega dados existentes ao iniciar.
+- Deletar Avaliações: Opção para remover avaliações individuais.
+- Deletar Livros: Permite a remoção de livros do catálogo.
 
-// Listar Livros:
+### Como Usar
+1. Clone o repositório.
+2. Abra o arquivo `index.html` em um navegador moderno.
+3. Use a interface para interagir com o catálogo de livros.
 
-// Crie uma função para exibir todos os livros disponíveis no
-// catálogo.
-// Adicionar Livro:
+### Tecnologias Utilizadas
+- HTML5
+- CSS3 (com Tailwind CSS)
+- JavaScript (ES6+)
+- Armazenamento Local do Navegador
 
-// Permita aos usuários adicionar novos livros ao catálogo.
-// Solicite informações como título, autor, gênero, ano de
-// publicação e permita a adição de avaliações.
+### Contribuições
+Contribuições são bem-vindas. Por favor, abra uma issue para discutir mudanças maiores antes de fazer um pull request.
 
-// PROJETO
+---
 
-// Buscar Livro:
+## English
 
-// Implemente uma funcionalidade de busca que permita aos
-// usuários encontrar livros com base no título, autor ou gênero.
+### About the Project
+This is an online book catalog system that allows users to view, add, search for, and rate books. Book information is stored locally and can be exported to a JSON file.
 
-// Classificar Livros:
+### Features
+- List Books: Displays all books available in the catalog.
+- Add Book: Allows users to add new books to the catalog.
+- Search Book: Enables finding books based on title, author, or genre.
+- Sort Books: Sorts books by title, author, or rating.
+- Rate Book: Allows users to assign ratings to existing books.
+- Favorites List: Users can mark books as favorites.
+- Image Management: Supports adding book covers, with a default image for books without a cover.
+- Save and Load: Saves changes locally and loads existing data on startup.
+- Delete Reviews: Option to remove individual reviews.
+- Delete Books: Allows removal of books from the catalog.
 
-// Adicione a capacidade de classificar os livros com base em
-// diferentes critérios, como título, autor ou avaliação.
+### How to Use
+1. Clone the repository.
+2. Open the `index.html` file in a modern browser.
+3. Use the interface to interact with the book catalog.
 
-// PROJETO
+### Technologies Used
+- HTML5
+- CSS3 (with Tailwind CSS)
+- JavaScript (ES6+)
+- Browser Local Storage
 
-// Avaliar Livro:
-
-// Permita aos usuários atribuir avaliações aos livros existentes.
-
-
-
-//implementacoes novas:
-// - Adicionar a lista de desejos (ou favoritos)
-
-funções implementadas
-
-// - Adicionar a foto em imagens
-// Salvar e Carregar do Arquivo JSON:
-// Implemente funções para salvar as alterações no arquivo JSON
-// e carregar os dados existentes ao iniciar o programa.
-// - adicionar validação caso nao seja adicionar uma imagem salvar com placeholder
-// - Opção de deletar review 
-// - Opção de deletar livro
-
-bug : Codigo sempre carrega arquivo original em json, nao importa se deletado ou nao
+### Contributions
+Contributions are welcome. Please open an issue to discuss major changes before making a pull request.

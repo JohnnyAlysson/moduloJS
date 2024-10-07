@@ -1,13 +1,13 @@
-// favorites.js
+
 
 let favoriteBooks = [];
 
 function initializeFavorites() {
-    // Load favorites from localStorage
+
     const storedFavorites = localStorage.getItem('favoriteBooks');
     favoriteBooks = storedFavorites ? JSON.parse(storedFavorites) : [];
 
-    // Add favorite button to the main UI
+
     const header = document.querySelector('header');
     const favoriteBtn = document.createElement('button');
     favoriteBtn.innerHTML = `
@@ -16,11 +16,11 @@ function initializeFavorites() {
         </svg>
         Favorites
     `;
-    favoriteBtn.className = 'bg-yellow-500 text-white px-4 py-2 rounded-md hover:bg-yellow-600 transition-colors flex items-center';
+    favoriteBtn.className = 'bg-yellow-500 text-white px-4 py-2 rounded-md hover:bg-yellow-600 transition-colors flex items-center my-1';
     favoriteBtn.addEventListener('click', openFavoritesModal);
     header.appendChild(favoriteBtn);
 
-    // Create favorites modal
+
     const favoritesModal = document.createElement('div');
     favoritesModal.id = 'favoritesModal';
     favoritesModal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden';
@@ -66,7 +66,7 @@ function openFavoritesModal() {
     const favoritesList = document.getElementById('favoritesList');
     favoritesList.innerHTML = '';
 
-    // We'll call a function from the main script to populate the favorites list
+    
     window.populateFavoritesList(favoriteBooks);
 
     favoritesModal.classList.remove('hidden');
@@ -77,7 +77,7 @@ function closeFavoritesModal() {
     favoritesModal.classList.add('hidden');
 }
 
-// Export functions to be used in the main script
+
 window.favorites = {
     initializeFavorites,
     toggleFavorite,

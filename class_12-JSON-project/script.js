@@ -93,21 +93,20 @@ function displayBooks(books) {
             </button>
         `;
         
-        // Add click event for opening reviews
+        
         bookCard.addEventListener('click', (e) => {
             if (!e.target.closest('.favorite-btn') && !e.target.closest('.delete-book-btn')) {
                 openReviewsModal(book.id);
             }
         });
 
-        // Add click event for favorite button
+    
         const favoriteBtn = bookCard.querySelector('.favorite-btn');
         favoriteBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             window.favorites.toggleFavorite(book.id);
         });
 
-        // Add click event for delete button
         const deleteBtn = bookCard.querySelector('.delete-book-btn');
         deleteBtn.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -191,7 +190,7 @@ function displayBooks(books) {
             `;
             const deleteBtn = reviewItem.querySelector('.delete-review-btn');
             deleteBtn.addEventListener('click', (e) => {
-                e.stopPropagation(); // Prevent event bubbling
+                e.stopPropagation();
                 if (confirm('Are you sure you want to delete this review?')) {
                     deleteReview(bookId, index);
                 }
@@ -328,26 +327,26 @@ function displayBooks(books) {
         try {
             let coverDataUrl;
             if (coverFile && coverFile.size > 0) {
-                // If a file is selected, convert it to a data URL
+                
                 coverDataUrl = await convertToDataURL(coverFile);
             } else {
-                // If no file is selected, use the default placeholder
+                
                 coverDataUrl = "./assets/placeholder.svg";
             }
     
             const newBook = {
-                id: Date.now(), // Use timestamp as a unique ID
+                id: Date.now(), 
                 title: formData.get('title'),
                 author: formData.get('author'),
                 genre: formData.get('genre'),
                 year: parseInt(formData.get('year')),
                 rating: 0,
                 reviews: [],
-                cover: coverDataUrl // This will be either the uploaded image or the placeholder
+                cover: coverDataUrl 
             };
     
             books.push(newBook);
-            saveBooks(); // Save to local storage
+            saveBooks(); 
             filterBooks();
             window.favorites.updateFavoriteButton(newBook.id);
             bookModal.classList.add('hidden');
@@ -368,7 +367,7 @@ function displayBooks(books) {
         const book = books.find(b => b.id === currentBookId);
         book.reviews.push(newReview);
         book.rating = book.reviews.reduce((acc, review) => acc + review.rating, 0) / book.reviews.length;
-        saveBooks(); // Save updated books to local storage
+        saveBooks(); 
         filterBooks();
         openReviewsModal(currentBookId);
         reviewForm.reset();
