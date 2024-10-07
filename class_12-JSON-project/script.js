@@ -205,6 +205,54 @@ function displayBooks(books) {
         reviewsModal.classList.add('hidden');
     }
 
+    function createBookCard(book, isFavorite = false) {
+        const bookCard = document.createElement('div');
+        bookCard.className = 'bg-background rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer relative';
+        bookCard.dataset.bookId = book.id;
+        bookCard.innerHTML = `
+            <div class="h-48 w-full object-cover">
+                <img src="${book.cover}" alt="${book.title}" class="w-full h-full object-cover">
+            </div>
+            <div class="p-4">
+                <h3 class="text-lg font-bold mb-2">${book.title}</h3>
+                <p class="text-muted-foreground mb-2">${book.author}</p>
+                <div class="flex items-center mb-2">
+                    <svg class="w-5 h-5 fill-primary mr-1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    <span class="text-primary font-medium">${book.rating.toFixed(1)}</span>
+                </div>
+                <p class="text-sm text-muted-foreground">${book.genre} - ${book.year}</p>
+            </div>
+            <button class="favorite-btn absolute top-2 right-2 ${isFavorite ? 'text-yellow-500' : 'text-gray-400'} hover:text-yellow-500 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                </svg>
+            </button>
+        `;
+    
+        const favoriteBtn = bookCard.querySelector('.favorite-btn');
+        favoriteBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            window.favorites.toggleFavorite(book.id);
+        });
+    
+        bookCard.addEventListener('click', () => openReviewsModal(book.id));
+    
+        return bookCard;
+    }
+
+    function populateFavoritesList(favoriteBookIds) {
+        const favoritesList = document.getElementById('favoritesList');
+        favoritesList.innerHTML = '';
+    
+        favoriteBookIds.forEach(bookId => {
+            const book = books.find(b => b.id === bookId);
+            if (book) {
+                const bookCard = createBookCard(book, true);
+                favoritesList.appendChild(bookCard);
+            }
+        });
+    }
+
     function convertToDataURL(file) {
         return new Promise((resolve, reject) => {
             const reader = new FileReader();
@@ -327,5 +375,6 @@ function displayBooks(books) {
     });
 
     window.favorites.initializeFavorites();
+    window.populateFavoritesList = populateFavoritesList;
     loadBooks();
 });

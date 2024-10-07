@@ -1,11 +1,13 @@
-
+// favorites.js
 
 let favoriteBooks = [];
 
 function initializeFavorites() {
+    // Load favorites from localStorage
     const storedFavorites = localStorage.getItem('favoriteBooks');
     favoriteBooks = storedFavorites ? JSON.parse(storedFavorites) : [];
 
+    // Add favorite button to the main UI
     const header = document.querySelector('header');
     const favoriteBtn = document.createElement('button');
     favoriteBtn.innerHTML = `
@@ -18,6 +20,7 @@ function initializeFavorites() {
     favoriteBtn.addEventListener('click', openFavoritesModal);
     header.appendChild(favoriteBtn);
 
+    // Create favorites modal
     const favoritesModal = document.createElement('div');
     favoritesModal.id = 'favoritesModal';
     favoritesModal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden';
@@ -63,13 +66,8 @@ function openFavoritesModal() {
     const favoritesList = document.getElementById('favoritesList');
     favoritesList.innerHTML = '';
 
-    favoriteBooks.forEach(bookId => {
-        const book = books.find(b => b.id === bookId);
-        if (book) {
-            const bookCard = createBookCard(book, true);
-            favoritesList.appendChild(bookCard);
-        }
-    });
+    // We'll call a function from the main script to populate the favorites list
+    window.populateFavoritesList(favoriteBooks);
 
     favoritesModal.classList.remove('hidden');
 }
@@ -79,44 +77,10 @@ function closeFavoritesModal() {
     favoritesModal.classList.add('hidden');
 }
 
-function createBookCard(book, isFavorite = false) {
-    const bookCard = document.createElement('div');
-    bookCard.className = 'bg-background rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer relative';
-    bookCard.dataset.bookId = book.id;
-    bookCard.innerHTML = `
-        <div class="h-48 w-full object-cover">
-            <img src="${book.cover}" alt="${book.title}" class="w-full h-full object-cover">
-        </div>
-        <div class="p-4">
-            <h3 class="text-lg font-bold mb-2">${book.title}</h3>
-            <p class="text-muted-foreground mb-2">${book.author}</p>
-            <div class="flex items-center mb-2">
-                <svg class="w-5 h-5 fill-primary mr-1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                <span class="text-primary font-medium">${book.rating}</span>
-            </div>
-            <p class="text-sm text-muted-foreground">${book.genre} - ${book.year}</p>
-        </div>
-        <button class="favorite-btn absolute top-2 right-2 ${isFavorite ? 'text-yellow-500' : 'text-gray-400'} hover:text-yellow-500 transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-            </svg>
-        </button>
-    `;
-
-    const favoriteBtn = bookCard.querySelector('.favorite-btn');
-    favoriteBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        toggleFavorite(book.id);
-    });
-
-    bookCard.addEventListener('click', () => openReviewsModal(book.id));
-
-    return bookCard;
-}
-
+// Export functions to be used in the main script
 window.favorites = {
     initializeFavorites,
     toggleFavorite,
     updateFavoriteButton,
-    createBookCard
+    favoriteBooks
 };
