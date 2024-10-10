@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notflix</title>
+    <script src="https://kit.fontawesome.com/e817e6100b.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/index.css">
+</head>
+<body>
+    <header>
+        <div class="logo">NOTFLIX</div>
+        <nav>
+            <a href="#" class="active">Início</a>
+            <a href="#">Séries</a>
+            <a href="#">Filmes</a>
+            <a href="#">Minha Lista</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="search-section">
+            <h1>Catálogo de Filmes</h1>
+            <form id="searchForm" class="search-form">
+                <div class="search-wrapper">
+                    <input type="text" id="searchInput" placeholder="Buscar filme">
+                    <button type="submit">
+                        <i class="fa-solid fa-search"></i>
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <section class="content-section">
+            <div id="movieList" class="movies-grid"></div>
+            <div id="movieDetails" class="movie-details"></div>
+        </section>
+
+        <div class="home-button-container">
+            <button id="homeBTN" class="home-btn">
+                Home <i class="fa-solid fa-house"></i>
+            </button>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Notflix - Todos os direitos reservados</p>
+    </footer>
+
+    <script src="./js/main.js"></script>
+</body>
+</html>
