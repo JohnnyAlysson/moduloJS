@@ -1,0 +1,20 @@
+CREATE DATABASE wayne_industries;
+
+use wayne_industries;
+
+CREATE TABLE user(
+  ID INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR (250),
+  role VARCHAR(100)
+)
+
+CREATE TABLE stock(
+  ID INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCAHR (200),
+  type VARCHAR (100),
+  qtde INT,
+  in_use INT
+
+)
+
+-- we could use another table for log acess or log of itens used
