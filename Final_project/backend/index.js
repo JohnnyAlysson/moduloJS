@@ -1,0 +1,76 @@
+const express = require("express");
+const cors = require("cors");
+const pool = require("./db.js");
+const PORT = 3000;
+
+const app = express();
+
+app.use(cors());
+app.use(express.json());
+
+app.get("/api/users", async (req, res) => {
+  try {
+    const [rows] = await pool.query("SELECT * FROM users ");
+    res.json(rows);
+  } catch (error) {
+    res.status(500).json({ message: " Error while getting users info" });
+  }
+});
+
+app.post("/api/user", async (req, res) => {
+  const { user_name, user_role, user_password } = req.body;
+
+  try {
+    const query =
+      "INSERT INTO users (user_name,user_role,user_password) VALUES (?,?,?)";
+
+    await pool.query(query, [user_name, user_role, user_password]);
+
+    res.status(201).json({ message: `User added successfully: ${user_name}` });
+  } catch (error) {
+    res.status(500).json({ message: "Error while adding an user" });
+  }
+});
+
+app.put("/api/user/:id", async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const { user_name, user_role, user_password } = req.body;
+
+    if (!user_name || !user_role || !user_password) {
+      return res
+        .status(400)
+        .json({ message: "all fields required", receivedData: req.body });
+    }
+
+    const query =
+      "UPDATE users SET user_name = ?, user_role = ? , user_password = ? WHERE id = ?";
+
+    await pool.query(query, [user_name, user_role, user_password, id]);
+
+    res.status(200).json({ message: "User updated successfully" });
+  } catch (error) {
+    res.status(500).json({ message: "Error while updating user" });
+  }
+});
+
+app.delete("/api/user/:id", async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const query = "DELETE FROM users WHERE ID =?";
+
+    await pool.query(query, [id]);
+    res.status(200).json({ message: "User deleted sucessfully" });
+  } catch (error) {
+    res.status(500).json({ message: "error while deleting user" });
+  }
+});
+
+
+
+
+app.listen(PORT, () =>{
+  console.log('App running')
+})

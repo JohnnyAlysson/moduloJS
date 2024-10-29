@@ -2,10 +2,11 @@ CREATE DATABASE wayne_industries;
 
 use wayne_industries;
 
-CREATE TABLE user(
+CREATE TABLE users(
   ID INT AUTO_INCREMENT PRIMARY KEY,
   user_name VARCHAR (250),
-  user_role VARCHAR(100)
+  user_role VARCHAR(100),
+  password VARCHAR (100)
 );
 
 CREATE TABLE stock(
@@ -17,3 +18,41 @@ CREATE TABLE stock(
 
 )
 -- we could use another table for log acess or log of itens used
+
+INSERT INTO users (user_name, user_role, password) VALUES
+-- Employees
+('Clark Kent', 'employee', 'hashed_password_401'),
+('Diana Prince', 'employee', 'hashed_password_402'),
+('Barry Allen', 'employee', 'hashed_password_403'),
+
+-- Managers
+('Oliver Queen', 'manager', 'hashed_password_501'),
+('Selina Kyle', 'manager', 'hashed_password_502'),
+
+-- Security Administrators
+('Victor Stone', 'security_administrator', 'hashed_password_601'),
+('John Stewart', 'security_administrator', 'hashed_password_602');
+
+-- Inserting stock items
+INSERT INTO stock (item_name, category, qtde, in_use) VALUES
+-- Technology Items
+('Batcomputer Terminal', 'Technology', 5, 3),
+('Encrypted Communication Device', 'Technology', 20, 15),
+('Security Camera System', 'Technology', 50, 45),
+('Biometric Scanner', 'Technology', 10, 8),
+
+-- Vehicle Equipment
+('Batmobile Parts', 'Vehicles', 100, 30),
+('Aircraft Components', 'Vehicles', 50, 20),
+('Motorcycle Parts', 'Vehicles', 75, 25),
+
+-- Security Equipment
+('Grappling Hook', 'Security', 30, 12),
+('Smoke Pellets', 'Security', 200, 75),
+('Utility Belt', 'Security', 25, 15),
+('Body Armor', 'Security', 40, 35),
+
+-- Office Supplies
+('Company Laptops', 'Office', 100, 88),
+('Secure Filing Cabinets', 'Office', 30, 25),
+('Encrypted USB Drives', 'Office', 150, 120);
