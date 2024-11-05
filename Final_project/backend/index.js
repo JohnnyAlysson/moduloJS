@@ -85,14 +85,6 @@ app.get("/api/items", async (req, res) => {
   }
 });
 
-
-
-// ID INT AUTO_INCREMENT PRIMARY KEY,
-// item_name VARCHAR (200),
-// category VARCHAR (100),
-// qtde INT,
-// in_use INT
-
 app.post("/api/item", async (req, res) => {
   const { item_name, category, qtde, in_use} = req.body;
 
@@ -152,8 +144,6 @@ app.delete("/api/item/:id", async (req, res) => {
     res.status(500).json({ message: "error while deleting item" });
   }
 });
-
-
 
 
 app.listen(PORT, () =>{
