@@ -1,24 +1,23 @@
+-- Create database on PostgreSQL
 CREATE DATABASE wayne_industries;
 
-use wayne_industries;
-
-CREATE TABLE users(
-  ID INT AUTO_INCREMENT PRIMARY KEY,
-  user_name VARCHAR (250),
-  user_role VARCHAR(100),
-  password VARCHAR (100)
+-- Create tables
+CREATE TABLE users (
+    ID SERIAL PRIMARY KEY,  -- SERIAL replaces AUTO_INCREMENT
+    user_name VARCHAR(250),
+    user_role VARCHAR(100),
+    password VARCHAR(100)
 );
 
-CREATE TABLE stock(
-  ID INT AUTO_INCREMENT PRIMARY KEY,
-  item_name VARCHAR (200),
-  category VARCHAR (100),
-  qtde INT,
-  in_use INT
+CREATE TABLE stock (
+    ID SERIAL PRIMARY KEY,  -- SERIAL replaces AUTO_INCREMENT
+    item_name VARCHAR(200),
+    category VARCHAR(100),
+    qtde INTEGER,          -- INT becomes INTEGER in PostgreSQL
+    in_use INTEGER
+);
 
-)
--- we could use another table for log acess or log of itens used
-
+-- Insert users data
 INSERT INTO users (user_name, user_role, password) VALUES
 -- Employees
 ('Clark Kent', 'employee', 'hashed_password_401'),
@@ -33,7 +32,7 @@ INSERT INTO users (user_name, user_role, password) VALUES
 ('Victor Stone', 'security_administrator', 'hashed_password_601'),
 ('John Stewart', 'security_administrator', 'hashed_password_602');
 
--- Inserting stock items
+-- Insert stock data
 INSERT INTO stock (item_name, category, qtde, in_use) VALUES
 -- Technology Items
 ('Batcomputer Terminal', 'Technology', 5, 3),
