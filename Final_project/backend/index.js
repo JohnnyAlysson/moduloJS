@@ -9,6 +9,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.get("/api/status", async (req,res)=>{
+  res.json({message : "API WORKING"})
+})
 
 app.get("/api/users", async (req, res) => {
   try {
