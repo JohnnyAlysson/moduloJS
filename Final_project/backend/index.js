@@ -2,12 +2,22 @@ const express = require("express");
 const cors = require("cors");
 require('dotenv').config();
 const pool = require("./db.js");
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: '*', // Be more specific in production
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type']
+}));
+
 app.use(express.json());
+
+app.use((req, res, next) => {
+  console.log(`${new Date().toISOString()} - ${req.method} ${req.path}`);
+  next();
+});
 
 app.get("/api/status", async (req,res)=>{
   res.json({message : "API WORKING"})
@@ -101,6 +111,29 @@ app.delete("/api/user/:id", async (req, res) => {
 });
 
 
+// Add this to your backend
+app.get("/api/test-users", async (req, res) => {
+  try {
+      const { rows } = await pool.query('SELECT * FROM users');
+      res.json({
+          success: true,
+          userCount: rows.length,
+          sampleUser: rows.length > 0 ? {
+              ...rows[0],
+              password: '[HIDDEN]'
+          } : null,
+          columns: rows.length > 0 ? Object.keys(rows[0]) : []
+      });
+  } catch (error) {
+      res.status(500).json({
+          success: false,
+          error: error.message,
+          stack: error.stack
+      });
+  }
+});
+
+
 app.get("/api/items", async (req, res) => {
   try {
     const { rows } = await pool.query("SELECT * FROM stock");
@@ -188,6 +221,11 @@ app.delete("/api/item/:id", async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`App running on port ${PORT}`);
+app.use((req, res) => {
+  res.status(404).json({ message: "Route not found" });
+});
+
+
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server is running on port ${PORT}`);
 });

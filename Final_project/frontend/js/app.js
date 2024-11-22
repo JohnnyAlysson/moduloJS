@@ -1,9 +1,10 @@
 let currentUser = null;
-const API_URL = "http://localhost:3000/api";
+const API_URL = "https://modulojs.onrender.com/api";
 
 const loginSection = document.getElementById("loginSection");
 const dashboardSection = document.getElementById("dashboardSection");
 const loginForm = document.getElementById("loginForm");
+const submitBtn = document.getElementById("submit-btn");
 const loginError = document.getElementById("loginError");
 const logoutBtn = document.getElementById("logoutBtn");
 const dashboardBtn = document.getElementById("dashboardBtn");
@@ -13,7 +14,7 @@ const dashboardView = document.getElementById("dashboardView");
 const usersView = document.getElementById("usersView");
 const inventoryView = document.getElementById("inventoryView");
 
-//
+
 loginForm.addEventListener("submit", handleLogin);
 logoutBtn.addEventListener("click", handleLogout);
 dashboardBtn.addEventListener("click", () => showView("dashboard"));
@@ -22,29 +23,54 @@ inventoryBtn.addEventListener("click", () => showView("inventory"));
 
 async function handleLogin(e) {
   e.preventDefault();
-  const username = document.getElementById("username").value;
-  const password = document.getElementById("password").value;
+  
+  // 1. Log input values
+  const username = document.getElementById("username").value.trim();
+  const password = document.getElementById("password").value.trim();
+  console.log('Login attempt with:', { username, password });
 
   try {
-    const response = await fetch(`${API_URL}/users`);
-    const users = await response.json();
+      // 2. Log API call
+      console.log('Fetching users from:', `${API_URL}/users`);
+      const response = await fetch(`${API_URL}/users`);
+      
+      // 3. Log response status
+      console.log('Response status:', response.status);
+      console.log('Response OK?:', response.ok);
 
-    const user = users.find(
-      (u) => u.user_name === username && u.user_password === password
-    );
+      // 4. Log the raw response
+      const users = await response.json();
+      console.log('Users from database:', users);
 
-    if (user) {
-      currentUser = user;
-      loginSection.style.display = "none";
-      dashboardSection.style.display = "block";
-      loadDashboard();
-    } else {
-      loginError.textContent = "Invalid credentials";
-      loginError.style.display = "block";
-    }
+
+      const user = users.find(
+          (u) => {
+              const usernameMatch = u.user_name === username;
+              const passwordMatch = u.password === password;
+              return usernameMatch && passwordMatch;
+          }
+      );
+
+      if (user) {
+          console.log('Login successful, updating UI...');
+          currentUser = user;
+          loginSection.style.display = "none";
+          dashboardSection.style.display = "block";
+          loadDashboard();
+          console.log('UI updated successfully');
+      } else {
+          console.log('Login failed: Invalid credentials');
+          loginError.textContent = "Invalid credentials";
+          loginError.style.display = "block";
+      }
   } catch (error) {
-    loginError.textContent = "Error connecting to server";
-    loginError.style.display = "block";
+      console.error('Login error details:', {
+          message: error.message,
+          stack: error.stack,
+          error
+      });
+      loginError.textContent = "Error connecting to server";
+      loginError.style.display = "block";
   }
 }
 
@@ -108,12 +134,12 @@ async function loadUsers() {
     users.forEach((user) => {
       const tr = document.createElement("tr");
       tr.innerHTML = `
-                <td>${user.ID}</td>
+                <td>${user.id}</td>
                 <td>${user.user_name}</td>
                 <td>${user.user_role}</td>
                 <td>
-                    <button class="action-btn edit-btn" onclick="editUser(${user.ID})">Edit</button>
-                    <button class="action-btn delete-btn" onclick="deleteUser(${user.ID})">Delete</button>
+                    <button class="action-btn edit-btn" onclick="editUser(${user.id})">Edit</button>
+                    <button class="action-btn delete-btn" onclick="deleteUser(${user.id})">Delete</button>
                 </td>
             `;
       tbody.appendChild(tr);
@@ -131,17 +157,19 @@ async function loadInventory() {
     const tbody = document.querySelector("#inventoryTable tbody");
     tbody.innerHTML = "";
 
+    console.log('Items from database:', items);
+
     items.forEach((item) => {
       const tr = document.createElement("tr");
       tr.innerHTML = `
-                <td>${item.ID}</td>
+                <td>${item.id}</td>
                 <td>${item.item_name}</td>
                 <td>${item.category}</td>
                 <td>${item.qtde}</td>
                 <td>${item.in_use}</td>
                 <td>
-                    <button class="action-btn edit-btn" onclick="editItem(${item.ID})">Edit</button>
-                    <button class="action-btn delete-btn" onclick="deleteItem(${item.ID})">Delete</button>
+                    <button class="action-btn edit-btn" onclick="editItem(${item.id})">Edit</button>
+                    <button class="action-btn delete-btn" onclick="deleteItem(${item.id})">Delete</button>
                 </td>
             `;
       tbody.appendChild(tr);
@@ -156,7 +184,7 @@ async function editUser(id) {
   try {
     const response = await fetch(`${API_URL}/users`);
     const users = await response.json();
-    const user = users.find((u) => u.ID === id);
+    const user = users.find((u) => u.id === id);
 
     if (user) {
       const form = document.createElement("form");
@@ -257,7 +285,7 @@ async function editItem(id) {
   try {
     const response = await fetch(`${API_URL}/items`);
     const items = await response.json();
-    const item = items.find((i) => i.ID === id);
+    const item = items.find((i) => i.id === id);
 
     if (item) {
       const form = document.createElement("form");

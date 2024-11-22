@@ -9,6 +9,14 @@ const pool = new Pool ({
   ssl : {rejectUnauthorized :false}
 })
 
+pool.connect((err, client, release) => {
+  if (err) {
+    console.error('Error connecting to the database:', err);
+  } else {
+    console.log('Connected to database successfully');
+    release();
+  }
+});
 
 module.exports = pool;
 
