@@ -42,7 +42,7 @@ async function handleLogin(e) {
       const users = await response.json();
       console.log('Users from database:', users);
 
-
+      
       const user = users.find(
           (u) => {
               const usernameMatch = u.user_name === username;
